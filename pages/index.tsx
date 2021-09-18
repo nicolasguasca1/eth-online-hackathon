@@ -6,23 +6,26 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 
 import VideoPlayer from "../components/VideoPlayer";
-import Notifications from "../components/Notification";
+import Notifications from "../components/Notifications";
 import Options from "../components/Options";
 
 import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
-import { Auth } from "../components/Auth";
+import { Auth } from "components/Auth";
 
 // import PlayerCSS from "../components/playerCss";
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();
+  const username = user?.attributes.username;
 
   if (isAuthenticated) {
     return (
       <Container align="center">
-        <Heading mb={6}>Welcome to the decentralized LIVE Web!</Heading>
+        <Heading mb={6}>
+          Welcome to the decentralized LIVE Web {username}!
+        </Heading>
         <Button onClick={() => logout()}>Logout</Button>
         {/* <AppBar position="static" color="inherit" className={styles.grid}>
           <a>
