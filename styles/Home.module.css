@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer {
@@ -70,16 +71,22 @@
 }
 
 .grid {
+  border-radius: 15;
+  margin: "30px 100px";
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+  border: "2px solid black";
 }
 
 .card {
   margin: 1rem;
+  overflow: hidden;
+  flex-wrap: wrap;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -87,7 +94,6 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
 }
 
 .card:hover,
@@ -113,9 +119,23 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.image {
+  margin-left: 0.5rem;
+}
+
+.paper {
+  padding: "10px";
+  border: "2px solid black";
+  margin: "10px";
+}
+
+.video {
+  width: "550px";
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
