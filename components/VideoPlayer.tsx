@@ -7,21 +7,21 @@ const useStyles = makeStyles((theme) => ({
   video: {
     width: "550px",
     [theme.breakpoints.down("xs")]: {
-      width: "300px",
-    },
+      width: "300px"
+    }
   },
   gridContainer: {
     borderRadius: "15",
     justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
+      flexDirection: "column"
+    }
   },
   paper: {
     padding: "10px",
     border: "2px solid gray",
-    margin: "10px",
-  },
+    margin: "10px"
+  }
 }));
 
 const VideoPlayer = (props: any) => {
@@ -32,7 +32,7 @@ const VideoPlayer = (props: any) => {
     userVideo,
     callEnded,
     stream,
-    call,
+    call
   }: any = useContext(SocketContext);
   const classes = useStyles();
 

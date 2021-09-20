@@ -8,36 +8,19 @@ import styles from "../styles/Home.module.css";
 import VideoPlayer from "../components/VideoPlayer";
 import Notifications from "../components/Notifications";
 import Options from "../components/Options";
+import Header from "../components/UI/Header";
 
 import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
 import { Auth } from "components/Auth";
-
-// import PlayerCSS from "../components/playerCss";
+import User from "./user";
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();
   const username = user?.attributes.username;
-
   if (isAuthenticated) {
-    return (
-      <Container align="center">
-        <Heading mb={6}>
-          Welcome to the decentralized LIVE Web {username}!
-        </Heading>
-        <Button onClick={() => logout()}>Logout</Button>
-        {/* <AppBar position="static" color="inherit" className={styles.grid}>
-          <a>
-            <h2 color="black"> Start your session here!</h2>
-          </a>
-        </AppBar> */}
-        <VideoPlayer />
-        <Options>
-          <Notifications />
-        </Options>
-      </Container>
-    );
+    return <User username={username} />;
   }
 
   // const videoJsOptions = {
@@ -56,8 +39,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Video-Calls ETH POC</title>
         <meta name="description" content="VIDEO-CALLS" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/squared.png" />
       </Head>
+      <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>Video Calls!</h1>
         <Container align="center">
@@ -73,7 +57,7 @@ const Home: NextPage = () => {
         >
           Powered by{" "}
           <span className={styles.logo}>
-            <div>Lomplay</div>
+            <div>Callties labs</div>
           </span>
         </a>
       </footer>

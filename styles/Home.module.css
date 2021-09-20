@@ -1,3 +1,26 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.help_text {
+  font-size: 22px;
+  padding-left: 4px;
+  color: #c8d0da;
+}
+.action_btn {
+  display: flex;
+  align-items: center;
+}
+.icon_block {
+  font-size: 40px;
+  padding: 10px;
+  color: #ffffff;
+}
+
 .container {
   min-height: 100vh;
   padding: 0.5rem;
@@ -117,10 +140,13 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .image {
   margin-left: 0.5rem;
+  width: 100%;
 }
 
 .paper {
