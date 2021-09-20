@@ -41,12 +41,14 @@ const ContextProvider = ({ children }: any) => {
       }
     };
     getUserMedia();
-  }, []);
-  socket.on("me", (id) => setMe(id));
 
-  socket.on("callUser", ({ from, name: callerName, signal }) => {
-    setCall({ isReceivingCall: true, from, name: callerName, signal });
-  });
+    socket.on("me", (id) => setMe(id));
+
+    socket.on("callUser", ({ from, name: callerName, signal }) => {
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    });
+  }, []);
+
   const answerCall = () => {
     setCallAccepted(true);
 
