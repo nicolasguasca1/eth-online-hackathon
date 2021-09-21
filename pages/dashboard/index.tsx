@@ -39,19 +39,12 @@ const Dashboard = (props: any) => {
             creations.
           </p>
           <div className={styles.action_btn}>
-            <Button
-              className={styles.btn}
-              onClick={<Link href="/call/[userId]" as={`/call/${me}`}></Link>}
-            >
-              {/* <FontAwesomeIcon className={styles.icon_block} icon={faVideo} /> */}
-              New Meeting
-            </Button>
+            <Link passHref href="/call/[userId]" as={`/call/${me}`}>
+              <Button className={styles.btn}>New Meeting</Button>
+            </Link>
             <div className={styles.input_block}>
               <div className={styles.input_section}>
-                <Input
-                  className={styles.input_block}
-                  placeholder="Enter a code or link"
-                />
+                <Input placeholder="Enter a code or link" />
                 {/* <FontAwesomeIcon
                   className={styles.icon_block}
                   icon={faKeyboard}
