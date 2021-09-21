@@ -4,7 +4,7 @@ import {
   faExclamationCircle,
   faCog
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ const Header = () => {
             src="/squared.png"
           />
         </Link>
-        <Link href="/">
+        <Link passHref href="/">
           <span className={styles.help_text}>Callties</span>
         </Link>
       </div>

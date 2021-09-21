@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
 // import shortid from "shortid";
-import "./HomePage.scss";
+// import "./HomePage.scss";
 import Header from "../../components/UI/Header";
 
 import { SocketContext } from "../../Context";
@@ -39,7 +39,7 @@ const UserCall = () => {
                 href="/dashboard/[userId]"
                 as={`/dashboard/${me}/`}
               >
-                <FontAwesomeIcon className="icon-block" icon={faVideo} />
+                {/* <FontAwesomeIcon className="icon-block" icon={faVideo} /> */}
                 New Meeting
               </Link>
               <div className="input-block">

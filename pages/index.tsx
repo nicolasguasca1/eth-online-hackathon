@@ -8,19 +8,19 @@ import styles from "../styles/Home.module.css";
 import VideoPlayer from "../components/VideoPlayer";
 import Notifications from "../components/Notifications";
 import Options from "../components/Options";
-import Header from "../components/UI/Header";
 
 import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
 import { Auth } from "components/Auth";
-import User from "./dashboard/[userId]";
+import Dashboard from "./dashboard/index";
+import Page from "components/UI/Page";
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();
   const username = user?.attributes.username;
   if (isAuthenticated) {
-    return <User username={username} />;
+    return <Dashboard username={username} />;
   }
 
   // const videoJsOptions = {
@@ -35,13 +35,7 @@ const Home: NextPage = () => {
   //   ]
   // };
   return (
-    <div>
-      <Head>
-        <title>Video-Calls ETH POC</title>
-        <meta name="description" content="VIDEO-CALLS" />
-        <link rel="icon" href="/squared.png" />
-      </Head>
-      <Header />
+    <Page>
       <main className={styles.main}>
         <h1 className={styles.title}>Video Calls!</h1>
         <Container align="center">
@@ -61,7 +55,7 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer>
-    </div>
+    </Page>
   );
 };
 

@@ -9,8 +9,8 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   config: {
-    initialColorMode: "dark",
-  },
+    initialColorMode: "dark"
+  }
 });
 
 const serverUrl = "https://gpcsccfs4eyy.grandmoralis.com:2053/server";
