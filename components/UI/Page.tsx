@@ -14,7 +14,7 @@ const Page = ({ children }: IProps) => (
       <link rel="icon" href="/squared.png" />
     </Head>
     <Header />
-    <div className={styles.body}>{children}</div>
+    <div>{children}</div>
   </div>
 );
 

@@ -43,6 +43,7 @@ async function getCloud() {
   // return cloud;
 }
 const Call = (props: any) => {
+  const { isAuthenticated, logout, user } = useMoralis();
   // const router = useRouter();
   // const { id } = router.query;
   getCloud();
