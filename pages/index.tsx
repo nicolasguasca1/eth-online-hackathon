@@ -14,7 +14,7 @@ import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
 import { Auth } from "components/Auth";
-import User from "./user";
+import User from "./dashboard/[userId]";
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();

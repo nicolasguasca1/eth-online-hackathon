@@ -33,23 +33,27 @@ Moralis.serverURL = serverUrl;
 async function getCloud() {
   // Fetch data from external API
   const cloud = await Moralis.Cloud.run("cloud");
-  // console.log(cloud);
-  // const users = cloud.map((ParseUser: { attributes: { username: any } }) => ({
-  //   params: {
-  //     username: ParseUser.attributes.username
-  //   }
-  // }));
-  // return users;
-  return cloud;
+  const users = cloud.map((ParseUser: { attributes: { username: any } }) => ({
+    params: {
+      username: ParseUser.attributes.username
+    }
+  }));
+  console.log(users);
+  return users;
+  // return cloud;
 }
 const Call = (props: any) => {
   // const router = useRouter();
   // const { id } = router.query;
   getCloud();
-  console.log(getCloud());
 
   return (
     <>
+      <Head>
+        <title>Video-Calls ETH POC</title>
+        <meta name="description" content="VIDEO-CALLS" />
+        <link rel="icon" href="/squared.png" />
+      </Head>
       <Header />
       <Container align="center">
         <Heading mb={6}>
@@ -66,19 +70,19 @@ const Call = (props: any) => {
 };
 export default Call;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getCloud();
-  const paths = data.map((ParseUser: { attributes: { username: any } }) => ({
-    params: {
-      username: ParseUser.attributes.username
-    }
-  }));
-  // const data = await paths.json();
-  return {
-    paths,
-    fallback: false
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const data = await getCloud();
+//   const paths = data.map((ParseUser: { attributes: { username: any } }) => ({
+//     params: {
+//       username: ParseUser.attributes.username
+//     }
+//   }));
+//   // const data = await paths.json();
+//   return {
+//     paths,
+//     fallback: false
+//   };
+// };
 
 // export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 //   const postData = await getPostData(params.id as string);

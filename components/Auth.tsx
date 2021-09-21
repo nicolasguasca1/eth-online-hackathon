@@ -6,7 +6,7 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
