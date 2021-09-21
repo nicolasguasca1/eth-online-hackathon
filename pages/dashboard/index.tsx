@@ -5,7 +5,7 @@ import { faVideo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
 // import shortid from "shortid";
 // import "./HomePage.scss";
 import Page from "../../components/UI/Page";
-import { Input, Button } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 
 import styles from "../../styles/Home.module.css";
 
@@ -16,10 +16,12 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import profilePic from "/Users/nicolasguascasantamaria/Documents/GitHub/eth-online-hackathon/public/picture.jpg";
+import { ExternalLinkIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
+import Spinner from "@chakra-ui/react";
 
 const Dashboard = (props: any) => {
   // const history = useHistory();
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
   // const startCall = () => {
@@ -42,12 +44,28 @@ const Dashboard = (props: any) => {
               creations.
             </p>
             <div className={styles.action_btn}>
-              <Link passHref href="/call/[userId]" as={`/call/${me}`}>
-                <Button className={styles.btn}>New Meeting</Button>
+              <Link href="/call/[userId]" as={`/call/${me}`}>
+                <Button
+                  isLoading={isAuthenticating}
+                  loadingText="Loading"
+                  colorScheme="teal"
+                  variant="outline"
+                  spinnerPlacement="start"
+                  className={styles.btn}
+                >
+                  New Meeting
+                </Button>
               </Link>
               <div className={styles.input_block}>
                 <div className={styles.input_section}>
-                  <Input placeholder="Enter a code or link" />
+                  <InputGroup>
+                    <InputLeftElement
+                      pointerEvents="none"
+                      children={<ExternalLinkIcon color="gray.300" />}
+                    />
+                    <Input placeholder="Enter a code or link" />
+                  </InputGroup>
+
                   {/* <FontAwesomeIcon
                   className={styles.icon_block}
                   icon={faKeyboard}
@@ -59,7 +77,13 @@ const Dashboard = (props: any) => {
           </div>
           <div className={styles.help_text}>
             <Link passHref href="/">
-              <Button onClick={() => logout()}>Logout</Button>
+              <Button
+                colorScheme="red"
+                variant="solid"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
             </Link>
           </div>
         </div>

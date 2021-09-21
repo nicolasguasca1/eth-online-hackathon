@@ -15,7 +15,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import Notifications from "../../components/Notifications";
 import Options from "../../components/Options";
 
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
@@ -60,11 +60,17 @@ const Call = (props: any) => {
         <Heading mb={6}>
           Welcome to the decentralized LIVE Web {props.username}!
         </Heading>
-        <Button onClick={() => logout()}>Logout</Button>
         <VideoPlayer />
         <Options>
           <Notifications />
         </Options>
+        <div className={styles.help_text}>
+          <Link passHref href="/">
+            <Button colorScheme="red" variant="solid" onClick={() => logout()}>
+              Logout
+            </Button>
+          </Link>
+        </div>
       </Container>
     </>
   );
