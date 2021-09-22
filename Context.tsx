@@ -93,13 +93,11 @@ const ContextProvider = ({ children }: any) => {
     connectionRef.current = peer;
   };
 
-  const leaveCall = () => {
+  async function leaveCall() {
     setCallEnded(true);
-
     connectionRef.current.destroy();
-
-    window.location.reload();
-  };
+    if (typeof window !== "undefined") window.location.reload();
+  }
 
   return (
     <SocketContext.Provider

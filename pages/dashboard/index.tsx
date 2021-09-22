@@ -36,7 +36,7 @@ const Dashboard = (props: any) => {
       <div className={styles.body}>
         <div className={styles.left_side}>
           <div>
-            <h2 className={styles.h2}>Peer to peer meetings.</h2>
+            <h2 className={styles.h2}>Welcome to the Web3 Live Web.</h2>
             <p className={styles.p}>
               By using Callties, you are able to convert a meeting into a
               live-video creative factory. By pressing `New meeting`, you accept
@@ -44,7 +44,11 @@ const Dashboard = (props: any) => {
               creations.
             </p>
             <div className={styles.action_btn}>
-              <Link href="/call/[userId]" as={`/call/${me}`}>
+              <Link
+                passHref
+                href="/call/[userId]"
+                as={`/call/${user?.attributes.username}`}
+              >
                 <Button
                   isLoading={isAuthenticating}
                   loadingText="Loading"

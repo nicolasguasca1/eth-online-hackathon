@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/">
+        <Link passHref href="/">
           <Image
             className={styles.image}
             alt="logo"

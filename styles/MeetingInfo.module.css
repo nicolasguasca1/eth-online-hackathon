@@ -1,0 +1,68 @@
+.add_people_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #04796a;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+}
+.h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+.icon_add_ppl {
+  font-size: 12px;
+  margin-right: 10px;
+}
+.icon_permission {
+  color: #4385f4;
+  font-size: 20px;
+  margin-right: 10px;
+}
+.icon_span_meet_link {
+  cursor: pointer;
+  color: #555;
+}
+
+.info_text {
+  color: #222;
+  font-size: 14px;
+}
+
+.meet_link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f3f5;
+  padding: 15px;
+  border-radius: 5px;
+}
+.permission_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small_text {
+  font-size: 13px;
+  color: #222;
+}
+.span {
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background: none;
+  flex: 1;
+  color: #555;
+}

@@ -57,9 +57,7 @@ const Call = (props: any) => {
       </Head>
       <Header />
       <Container align="center">
-        <Heading mb={6}>
-          Welcome to the decentralized LIVE Web {props.username}!
-        </Heading>
+        <Heading mb={6}>{props.username}`s Meeting Room</Heading>
         <VideoPlayer />
         <Options>
           <Notifications />
