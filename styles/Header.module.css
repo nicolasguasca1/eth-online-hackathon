@@ -1,4 +1,4 @@
-.action-btn {
+.action_btn {
   display: flex;
   align-items: center;
 }
@@ -9,17 +9,17 @@
   padding: 20px;
   box-sizing: border-box;
 }
-.help-text {
+.help_text {
   font-size: 22px;
   padding-left: 4px;
   color: #5f6368;
 }
-.icon-block {
+.icon_block {
   font-size: 20px;
   padding: 10px;
   color: #5f6368;
 }
-.img {
+.image {
   width: 100%;
 }
 .logo {

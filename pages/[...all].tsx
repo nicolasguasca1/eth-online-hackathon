@@ -1,11 +1,10 @@
 import Link from "next/link";
 import styles from "../styles/NoMatch.module.css";
-import Header from "../components/UI/Header";
+import Page from "../components/UI/Page";
 
 const NoMatch = () => {
   return (
-    <div>
-      <Header />
+    <Page>
       <div className={styles.no_match_content}>
         <h2 className={styles.h2}>Ups! You have reached an invalid path.</h2>
         <div className="action-btn">
@@ -14,7 +13,7 @@ const NoMatch = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </Page>
   );
 };
 export default NoMatch;

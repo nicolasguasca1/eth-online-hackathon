@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import Header from "./Header";
+import Header from "../../components/UI/Header";
 
 interface IProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ const Page = ({ children }: IProps) => (
       <link rel="icon" href="/squared.png" />
     </Head>
     <Header />
+
     <div>{children}</div>
   </div>
 );

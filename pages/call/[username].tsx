@@ -14,6 +14,7 @@ import Header from "../../components/UI/Header";
 import VideoPlayer from "../../components/VideoPlayer";
 import Notifications from "../../components/Notifications";
 import Options from "../../components/Options";
+import Page from "../../components/UI/Page";
 
 import styles from "../../styles/Home.module.css";
 
@@ -50,30 +51,73 @@ const Call = (props: any) => {
 
   return (
     <>
-      <Head>
-        <title>Video-Calls ETH POC</title>
-        <meta name="description" content="VIDEO-CALLS" />
-        <link rel="icon" href="/squared.png" />
-      </Head>
-      <Header />
-      <Container align="center">
-        <Heading mb={6}>{props.username}`s Meeting Room</Heading>
-        <VideoPlayer />
-        <Options>
-          <Notifications />
-        </Options>
-        <div className={styles.help_text}>
-          <Link passHref href="/">
-            <Button colorScheme="red" variant="solid" onClick={() => logout()}>
-              Logout
-            </Button>
-          </Link>
-        </div>
-      </Container>
+      <Page>
+        {/* <Head>
+          <title>Video-Calls ETH POC</title>
+          <meta name="description" content="VIDEO-CALLS" />
+          <link rel="icon" href="/squared.png" />
+        </Head>
+        <Header /> */}
+        <Container align="center">
+          <Heading mb={6}>{props.username}`s Meeting Room</Heading>
+          <VideoPlayer />
+          <Options>
+            <Notifications />
+          </Options>
+          <div className={styles.help_text}>
+            <Link passHref href="/">
+              <Button
+                colorScheme="red"
+                variant="solid"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </Page>
     </>
   );
 };
 export default Call;
+
+// SACADO DE YOUTUBE: https://www.youtube.com/watch?v=2zRHlqc0_yw
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  // const res = await Moralis.Cloud.run("cloud");
+  const res = await fetch(
+    "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User"
+  );
+  const data = await res.json();
+  const paths = data.map((ParseUser: { attributes: { username: any } }) => ({
+    params: {
+      username: ParseUser.attributes.username
+    }
+  }));
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ context }: any) => {
+  const objectId = context.params.objectId;
+  // const postData = await getPostData(params.id as string);
+  // const res = await Moralis.Cloud.run("cloud" + objectId);
+  const res = await fetch(
+    "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User" + objectId
+  );
+  const data = await res.json();
+  return {
+    props: {
+      user: data
+    },
+    revalidate: 1 // In seconds
+  };
+};
+
+// DOCUMENTATION DE NEXT
 
 // export const getStaticPaths: GetStaticPaths = async () => {
 //   const data = await getCloud();

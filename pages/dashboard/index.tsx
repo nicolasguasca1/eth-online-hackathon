@@ -46,7 +46,7 @@ const Dashboard = (props: any) => {
             <div className={styles.action_btn}>
               <Link
                 passHref
-                href="/call/[userId]"
+                href="/call/[username]"
                 as={`/call/${user?.attributes.username}`}
               >
                 <Button
