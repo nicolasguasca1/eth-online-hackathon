@@ -15,7 +15,7 @@ const Page = ({ children }: IProps) => (
     </Head>
     <Header />
 
-    <div>{children}</div>
+    {children}
   </div>
 );
 

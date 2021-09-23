@@ -15,7 +15,6 @@ import { Container, Heading } from "@chakra-ui/layout";
 import { Auth } from "components/Auth";
 import Dashboard from "./dashboard/index";
 import Page from "components/UI/Page";
-import Header from "components/UI/Header";
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();
@@ -37,7 +36,6 @@ const Home: NextPage = () => {
   // };
   return (
     <Page>
-      <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>Video Calls!</h1>
         <Container align="center">
