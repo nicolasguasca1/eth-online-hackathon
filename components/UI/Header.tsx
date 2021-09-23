@@ -22,10 +22,10 @@ const Header = () => {
           />
         </Link>
         <Link passHref href="/">
-          <span className={styles.help_text}>Callties</span>
+          <span className={styles.title}>Callties</span>
         </Link>
       </div>
-      <div className={styles.action_btn}>
+      {/* <div className={styles.action_btn}>
         <FontAwesomeIcon
           className={styles.icon_block}
           icon={faQuestionCircle}
@@ -35,6 +35,34 @@ const Header = () => {
           icon={faExclamationCircle}
         />
         <FontAwesomeIcon className={styles.icon_block} icon={faCog} />
+      </div> */}
+      <div className={styles.action_btn}>
+        {/* <Link passHref href="/">
+          <Image
+            className={styles.image}
+            alt="logo"
+            width="60"
+            height="60"
+            src="/squared.png"
+          />
+        </Link> */}
+        <Link passHref href="/dashboard/[username]">
+          <span className={styles.help_text}>Dashboard</span>
+        </Link>
+        {/* </div>
+      <div className={styles.action_btn}> */}
+        {/* <Link passHref href="/">
+          <Image
+            className={styles.image}
+            alt="logo"
+            width="60"
+            height="60"
+            src="/squared.png"
+          />
+        </Link> */}
+        <Link passHref href="/settings/[username]">
+          <span className={styles.help_text}>Settings</span>
+        </Link>
       </div>
     </div>
   );

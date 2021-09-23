@@ -10,9 +10,15 @@
   box-sizing: border-box;
 }
 .help_text {
+  font-size: 18px;
+  padding-left: 15px;
+  color: #ffffff;
+}
+
+.title {
   font-size: 22px;
-  padding-left: 4px;
-  color: #5f6368;
+  padding-left: 10px;
+  color: #b162ff;
 }
 .icon_block {
   font-size: 20px;

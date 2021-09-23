@@ -7,7 +7,7 @@ const NoMatch = () => {
     <Page>
       <div className={styles.no_match_content}>
         <h2 className={styles.h2}>Ups! You have reached an invalid path.</h2>
-        <div className="action-btn">
+        <div className={styles.btn}>
           <Link passHref href="/home">
             Return to home screen
           </Link>

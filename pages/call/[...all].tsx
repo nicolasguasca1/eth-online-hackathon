@@ -9,7 +9,7 @@ const NoMatch = () => {
         <h2 className={styles.h2}>
           Ups! The path you are looking for does not match any existing call.
         </h2>
-        <div className="action-btn">
+        <div className={styles.btn}>
           <Link passHref href="/home">
             Return to home screen
           </Link>
