@@ -71,7 +71,7 @@
   cursor: pointer;
   background: rgba(0, 121, 107, 0.039);
 }
-.send-msg-section {
+.send_msg_section {
   padding: 20px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;

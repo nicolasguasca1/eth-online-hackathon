@@ -29,20 +29,6 @@ const ContextProvider = ({ children }: any) => {
         }
       });
 
-    // useEffect(() => {
-    //   const getUserMedia = async () => {
-    //     try {
-    //       const currentStream = await navigator.mediaDevices.getUserMedia({
-    //         video: true,
-    //         audio: true
-    //       });
-    //       myVideo.current.srcObject = currentStream;
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    //   };
-    //   getUserMedia();
-
     socket.on("me", (id) => setMe(id));
 
     socket.on("callUser", ({ from, name: callerName, signal }) => {

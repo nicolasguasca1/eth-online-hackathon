@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import React from "react";
 
 import { MoralisProvider } from "react-moralis";
-import { ContextProvider } from "../Context";
+import { ContextProvider } from "../Store";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({

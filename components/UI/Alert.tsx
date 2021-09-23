@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/styles/Alert.module.css";
+import styles from "../../styles/Alert.module.css";
 
 const Alert = ({ messageAlert }) => {
   return (

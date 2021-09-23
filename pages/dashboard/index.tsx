@@ -9,7 +9,7 @@ import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 
 import styles from "../../styles/Home.module.css";
 
-import { SocketContext } from "../../Context";
+import { SocketContext } from "../../Store";
 import { useMoralis } from "react-moralis";
 
 import { useRouter } from "next/router";

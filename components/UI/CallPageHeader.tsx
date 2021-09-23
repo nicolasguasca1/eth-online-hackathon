@@ -5,7 +5,7 @@ import {
   faCommentAlt,
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/styles/CallPageHeader.module.css";
+import styles from "../../styles/CallPageHeader.module.css";
 import { formatDate } from "../../utils/helpers";
 
 const CallPageHeader = ({

@@ -5,9 +5,9 @@ import {
   faUser,
   faShieldAlt
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/styles/MeetingInfo.module.css";
+import styles from "../../styles/MeetingInfo.module.css";
 
-const MeetingInfo = ({ setMeetInfoPopup, url }) => {
+const MeetingInfo = ({ setMeetInfoPopup, url }: any) => {
   return (
     <div className={styles.meeting_info_block}>
       <div className={styles.meeting_header}>

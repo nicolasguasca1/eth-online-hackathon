@@ -8,7 +8,7 @@ import {
   faDesktop,
   faMicrophoneSlash
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/styles/CallPageFooter.module.css";
+import styles from "../../styles/CallPageFooter.module.css";
 
 const CallPageFooter = ({
   isPresenting,
