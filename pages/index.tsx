@@ -1,8 +1,10 @@
 import { AppBar } from "@material-ui/core";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+
 // import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/Home.module.css";
 
 import VideoPlayer from "../components/VideoPlayer";
@@ -12,34 +14,29 @@ import Options from "../components/Options";
 import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
-import { Auth } from "components/Auth";
-import Dashboard from "./dashboard/index";
+import Login from "./login";
+import Home from "./home";
 import Page from "components/UI/Page";
 
-const Home: NextPage = () => {
+const Landing: NextPage = () => {
   const { isAuthenticated, logout, user } = useMoralis();
   const username = user?.attributes.username;
-  if (isAuthenticated) {
-    return <Dashboard username={username} />;
-  }
+  const router = useRouter();
 
-  // const videoJsOptions = {
-  //   techOrder: ["youtube"],
-  //   autoplay: false,
-  //   controls: true,
-  //   sources: [
-  //     {
-  //       src: "https://www.youtube.com/watch?v=IxQB14xVas0",
-  //       type: "video/youtube"
-  //     }
-  //   ]
-  // };
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/login");
+    } else {
+      <Home />;
+    }
+  }, [isAuthenticated]);
+
   return (
     <Page>
       <main className={styles.main}>
         <h1 className={styles.title}>Video Calls!</h1>
         <Container align="center">
-          <Auth></Auth>
+          <Login></Login>
         </Container>
         {/* <PlayerCSS /> */}
       </main>
@@ -59,4 +56,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Landing;

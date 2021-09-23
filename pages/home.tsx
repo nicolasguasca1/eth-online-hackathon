@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
 // import shortid from "shortid";
 // import "./HomePage.scss";
-import Page from "../../components/UI/Page";
+import Page from "../components/UI/Page";
 import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 
-import styles from "../../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
-import { SocketContext } from "../../Context";
+import { SocketContext } from "../Context";
 import { useMoralis } from "react-moralis";
 
 import { useRouter } from "next/router";
@@ -19,7 +19,7 @@ import profilePic from "/Users/nicolasguascasantamaria/Documents/GitHub/eth-onli
 import { ExternalLinkIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import Spinner from "@chakra-ui/react";
 
-const Dashboard = (props: any) => {
+const Home = (props: any) => {
   // const history = useHistory();
   const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
@@ -36,9 +36,7 @@ const Dashboard = (props: any) => {
       <div className={styles.body}>
         <div className={styles.left_side}>
           <div>
-            <h2 className={styles.h2}>
-              THIS IS DASHBOARDWelcome to the Web3 Live Web.
-            </h2>
+            <h2 className={styles.h2}>Welcome to a Web3 Live experience</h2>
             <p className={styles.p}>
               By using Callties, you are able to convert a meeting into a
               live-video creative factory. By pressing `New meeting`, you accept
@@ -108,4 +106,4 @@ const Dashboard = (props: any) => {
     </Page>
   );
 };
-export default Dashboard;
+export default Home;

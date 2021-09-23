@@ -15,6 +15,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import Notifications from "../../components/Notifications";
 import Options from "../../components/Options";
 import Page from "../../components/UI/Page";
+import Home from "../home";
 
 import styles from "../../styles/Home.module.css";
 
@@ -24,6 +25,7 @@ import { Container, Heading } from "@chakra-ui/layout";
 import { useMoralis } from "react-moralis";
 
 import { Moralis } from "moralis";
+import { useEffect } from "react";
 
 const serverUrl = "https://gpcsccfs4eyy.grandmoralis.com:2053/server";
 const appId = "nDoAAbLEDLmP9TArw7fXMikJnSTiB4XJlCDkfo4L";
@@ -45,8 +47,16 @@ async function getCloud() {
 }
 const Call = (props: any) => {
   const { isAuthenticated, logout, user } = useMoralis();
-  // const router = useRouter();
-  // const { id } = router.query;
+  // const username = user?.attributes.username;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/login");
+    } else {
+      <Home />;
+    }
+  }, [isAuthenticated]);
   getCloud();
 
   return (
@@ -59,7 +69,7 @@ const Call = (props: any) => {
         </Head>
         <Header /> */}
         <Container align="center">
-          <Heading mb={6}>{props.username}`s Meeting Room</Heading>
+          <Heading mb={6}>{user?.attributes.username}`s Meeting Room</Heading>
           <VideoPlayer />
           <Options>
             <Notifications />
@@ -84,38 +94,38 @@ export default Call;
 
 // SACADO DE YOUTUBE: https://www.youtube.com/watch?v=2zRHlqc0_yw
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // const res = await Moralis.Cloud.run("cloud");
-  const res = await fetch(
-    "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User"
-  );
-  const data = await res.json();
-  const paths = data.map((ParseUser: { attributes: { username: any } }) => ({
-    params: {
-      username: ParseUser.attributes.username
-    }
-  }));
-  return {
-    paths,
-    fallback: false
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   // const res = await Moralis.Cloud.run("cloud");
+//   const res = await fetch(
+//     "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User"
+//   );
+//   const data = await res.json();
+//   const paths = data.map((ParseUser: { attributes: { username: any } }) => ({
+//     params: {
+//       username: ParseUser.attributes.username
+//     }
+//   }));
+//   return {
+//     paths,
+//     fallback: false
+//   };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ context }: any) => {
-  const objectId = context.params.objectId;
-  // const postData = await getPostData(params.id as string);
-  // const res = await Moralis.Cloud.run("cloud" + objectId);
-  const res = await fetch(
-    "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User" + objectId
-  );
-  const data = await res.json();
-  return {
-    props: {
-      user: data
-    },
-    revalidate: 1 // In seconds
-  };
-};
+// export const getStaticProps: GetStaticProps = async ({ context }: any) => {
+//   const objectId = context.params.objectId;
+//   // const postData = await getPostData(params.id as string);
+//   // const res = await Moralis.Cloud.run("cloud" + objectId);
+//   const res = await fetch(
+//     "https://gpcsccfs4eyy.grandmoralis.com:2053/server/classes/_User" + objectId
+//   );
+//   const data = await res.json();
+//   return {
+//     props: {
+//       user: data
+//     },
+//     revalidate: 1 // In seconds
+//   };
+// };
 
 // DOCUMENTATION DE NEXT
 

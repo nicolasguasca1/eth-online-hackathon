@@ -11,8 +11,11 @@ import {
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
 
+import { useRouter } from "next/router";
+
 export const Auth = () => {
   const { authenticate, isAuthenticating, authError } = useMoralis();
+  const router = useRouter();
 
   const SignUp = () => {
     const { signup } = useMoralis();
@@ -63,7 +66,14 @@ export const Auth = () => {
           value={password}
           onChange={(event) => setPassword(event.currentTarget.value)}
         />
-        <Button onClick={() => login(username, password)}>Login</Button>
+        <Button
+          onClick={() => {
+            login(username, password);
+            router.push("/home");
+          }}
+        >
+          Login
+        </Button>
       </Stack>
     );
   };

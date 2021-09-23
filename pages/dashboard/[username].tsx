@@ -28,11 +28,8 @@ const UserCall = () => {
       <div className="body">
         <div className="left-side">
           <div className="content">
-            <h2>Premium video meetings. Now free for everyone.</h2>
-            <p>
-              We re-engineered the service we built for secure business
-              meetings, Google Meet, to make it free and available for all.
-            </p>
+            <h2>BUILD THE USER PROFILE HERE</h2>
+            <p>W...</p>
             <div className="action-btn">
               <Link
                 className="btn green"
@@ -57,7 +54,7 @@ const UserCall = () => {
         </div>
         <div className="right-side">
           <div className="content">
-            <img src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg" />
+            {/* <img src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg" /> */}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const NoMatch = () => {
           Ups! The path you are looking for does not match any existing call.
         </h2>
         <div className="action-btn">
-          <Link passHref href="/">
+          <Link passHref href="/home">
             Return to home screen
           </Link>
         </div>
