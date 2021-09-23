@@ -7,10 +7,16 @@ import { useRouter } from "next/router";
 import { Auth } from "../components/Auth";
 import { Container, Heading } from "@chakra-ui/layout";
 import Page from "components/UI/Page";
+import Home from "./home";
 
 const Login = () => {
-  //   const { authenticate, isAuthenticating, authError } = useMoralis();
   const router = useRouter();
+
+  const { authenticate, isAuthenticating, isAuthenticated, authError } =
+    useMoralis();
+  if (isAuthenticated) {
+    router.push("/home");
+  }
 
   return (
     <Page>
@@ -22,11 +28,7 @@ const Login = () => {
         {/* <PlayerCSS /> */}
       </main>
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a target="_blank" rel="noopener noreferrer">
           Powered by
           <span className={styles.logo}>
             <div>Callties labs</div>

@@ -8,9 +8,10 @@ import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useMoralis } from "react-moralis";
+import { Button } from "@chakra-ui/react";
 
 const Header = () => {
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticated, logout, user }: any = useMoralis();
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -29,6 +30,17 @@ const Header = () => {
       </div>
       {isAuthenticated && (
         <div className={styles.action_btn}>
+          <div className={styles.help_text}>
+            <Link passHref href="/">
+              <Button
+                colorScheme="red"
+                variant="solid"
+                onClick={() => logout()}
+              >
+                Logout {user.attributes.username}
+              </Button>
+            </Link>
+          </div>
           <Link passHref href="/dashboard/[username]">
             <button className={styles.help_text}>Dashboard</button>
           </Link>

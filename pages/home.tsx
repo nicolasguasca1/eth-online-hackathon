@@ -60,35 +60,20 @@ const Home = (props: any) => {
                   New Meeting
                 </Button>
               </Link>
+              <span className={styles.p}>or</span>
               <div className={styles.input_block}>
                 <div className={styles.input_section}>
-                  <InputGroup>
+                  <InputGroup className={styles.input}>
                     <InputLeftElement
                       pointerEvents="none"
                       children={<ExternalLinkIcon color="gray.300" />}
                     />
                     <Input placeholder="Enter a code or link" />
                   </InputGroup>
-
-                  {/* <FontAwesomeIcon
-                  className={styles.icon_block}
-                  icon={faKeyboard}
-                /> */}
                 </div>
                 <button className={styles.btn}>Join</button>
               </div>
             </div>
-          </div>
-          <div className={styles.help_text}>
-            <Link passHref href="/">
-              <Button
-                colorScheme="red"
-                variant="solid"
-                onClick={() => logout()}
-              >
-                Logout
-              </Button>
-            </Link>
           </div>
         </div>
         <div className={styles.right_side}>
