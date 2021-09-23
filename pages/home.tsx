@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +21,6 @@ import Spinner from "@chakra-ui/react";
 
 const Home = (props: any) => {
   // const history = useHistory();
-  const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
   //   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
   //     useContext<any>(SocketContext);
   // const startCall = () => {
@@ -29,7 +28,13 @@ const Home = (props: any) => {
   //   history.push(`/${uid}#init`);
   // };
   const router = useRouter();
-  const { id } = router.query;
+  // const { id } = router.query;
+  const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/login");
+    }
+  }, [isAuthenticated]);
 
   return (
     <Page>

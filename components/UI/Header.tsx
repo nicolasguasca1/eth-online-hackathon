@@ -37,7 +37,7 @@ const Header = () => {
                 variant="solid"
                 onClick={() => logout()}
               >
-                Logout {user.attributes.username}
+                Logout {user !== null && user.attributes.username}
               </Button>
             </Link>
           </div>

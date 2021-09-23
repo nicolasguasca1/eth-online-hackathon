@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 import { useMoralis } from "react-moralis";
@@ -11,12 +11,15 @@ import Home from "./home";
 
 const Login = () => {
   const router = useRouter();
-
   const { authenticate, isAuthenticating, isAuthenticated, authError } =
     useMoralis();
-  if (isAuthenticated) {
-    router.push("/home");
-  }
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/home");
+    } else {
+      <Home />;
+    }
+  }, [isAuthenticated]);
 
   return (
     <Page>

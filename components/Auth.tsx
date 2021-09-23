@@ -14,7 +14,8 @@ import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 
 export const Auth = () => {
-  const { authenticate, isAuthenticating, authError } = useMoralis();
+  const { authenticate, isAuthenticating, authError, isAuthenticated } =
+    useMoralis();
   const router = useRouter();
 
   const SignUp = () => {
