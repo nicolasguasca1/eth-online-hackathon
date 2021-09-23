@@ -46,7 +46,7 @@ const Landing: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by
           <span className={styles.logo}>
             <div>Callties labs</div>
           </span>

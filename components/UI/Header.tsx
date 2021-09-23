@@ -7,8 +7,10 @@ import {
 import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useMoralis } from "react-moralis";
 
 const Header = () => {
+  const { isAuthenticated, logout, user } = useMoralis();
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -22,48 +24,19 @@ const Header = () => {
           />
         </Link>
         <Link passHref href="/">
-          <span className={styles.title}>Callties</span>
+          <button className={styles.title}>Callties</button>
         </Link>
       </div>
-      {/* <div className={styles.action_btn}>
-        <FontAwesomeIcon
-          className={styles.icon_block}
-          icon={faQuestionCircle}
-        />
-        <FontAwesomeIcon
-          className={styles.icon_block}
-          icon={faExclamationCircle}
-        />
-        <FontAwesomeIcon className={styles.icon_block} icon={faCog} />
-      </div> */}
-      <div className={styles.action_btn}>
-        {/* <Link passHref href="/">
-          <Image
-            className={styles.image}
-            alt="logo"
-            width="60"
-            height="60"
-            src="/squared.png"
-          />
-        </Link> */}
-        <Link passHref href="/dashboard/[username]">
-          <span className={styles.help_text}>Dashboard</span>
-        </Link>
-        {/* </div>
-      <div className={styles.action_btn}> */}
-        {/* <Link passHref href="/">
-          <Image
-            className={styles.image}
-            alt="logo"
-            width="60"
-            height="60"
-            src="/squared.png"
-          />
-        </Link> */}
-        <Link passHref href="/settings/[username]">
-          <span className={styles.help_text}>Settings</span>
-        </Link>
-      </div>
+      {isAuthenticated && (
+        <div className={styles.action_btn}>
+          <Link passHref href="/dashboard/[username]">
+            <button className={styles.help_text}>Dashboard</button>
+          </Link>
+          <Link passHref href="/settings/[username]">
+            <button className={styles.help_text}>Settings</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
