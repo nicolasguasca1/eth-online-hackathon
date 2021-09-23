@@ -9,7 +9,7 @@ import { Container, Heading } from "@chakra-ui/layout";
 import Page from "components/UI/Page";
 
 const Login = () => {
-  const { authenticate, isAuthenticating, authError } = useMoralis();
+  //   const { authenticate, isAuthenticating, authError } = useMoralis();
   const router = useRouter();
 
   return (

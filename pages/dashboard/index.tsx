@@ -22,8 +22,8 @@ import Spinner from "@chakra-ui/react";
 const Dashboard = (props: any) => {
   // const history = useHistory();
   const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-    useContext<any>(SocketContext);
+  // const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
+  //   useContext<any>(SocketContext);
   // const startCall = () => {
   //   const uid = shortid.generate();
   //   history.push(`/${uid}#init`);
