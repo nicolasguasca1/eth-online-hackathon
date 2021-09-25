@@ -50,13 +50,53 @@ const Call = (props: any) => {
   // const username = user?.attributes.username;
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isAuthenticated) router.push("/login");
-  }, [isAuthenticated]);
-  getCloud();
+  if (!isAuthenticated) {
+    return (
+      <Page>
+        <div className={styles.no_match_content}>
+          <h2 className={styles.h2}>Please login first to access a call.</h2>
+          <div className={styles.btn}>
+            <Link passHref href="/login">
+              Login
+            </Link>
+          </div>
+        </div>
+      </Page>
+    );
+  }
+  // getCloud();
+
+  // LOGIC ADDED WITH USEREDUCER
 
   return (
     <>
+      <Page>
+        {/* <Head>
+          <title>Video-Calls ETH POC</title>
+          <meta name="description" content="VIDEO-CALLS" />
+          <link rel="icon" href="/squared.png" />
+        </Head>
+        <Header /> */}
+        <Container align="center">
+          <Heading mb={6}>{user?.attributes.username}`s Meeting Room</Heading>
+          <VideoPlayer />
+          <Options>
+            <Notifications />
+          </Options>
+          <div className={styles.help_text}>
+            <Link passHref href="/">
+              <Button
+                colorScheme="red"
+                variant="solid"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </Page>
+      {/* DUPLICATE WITH USEREDUCER  */}
       <Page>
         {/* <Head>
           <title>Video-Calls ETH POC</title>
