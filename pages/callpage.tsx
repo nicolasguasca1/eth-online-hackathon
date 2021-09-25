@@ -3,14 +3,16 @@ import { useEffect, useReducer, useState } from "react";
 // import { getRequest, postRequest } from "../utils/apiRequests";  DONE IN SERVER!
 // import { BASE_URL, GET_CALL_ID, SAVE_CALL_ID } from "../utils/apiEndpoints";
 import io from "socket.io-client";
+import styles from "../styles/CallPage.module.css";
 import Peer from "simple-peer";
-import styles from "@/styles/CallPage.module.css";
 import Messenger from "../components/UI/Messenger";
 import MessageListReducer from "../reducers/MessageListReducer";
 import Alert from "../components/UI/Alert";
 import MeetingInfo from "../components/UI/MeetingInfo";
 import CallPageFooter from "../components/UI/CallPageFooter";
 import CallPageHeader from "../components/UI/CallPageHeader";
+
+import VideoPlayer from "../components/VideoPlayer";
 
 // let peer = null;
 // const socket = io.connect(process.env.REACT_APP_BASE_URL);
@@ -194,8 +196,8 @@ const CallPage = () => {
   // };
 
   return (
-    <div className="callpage-container">
-      <video className="video-container" src="" controls></video>
+    <div>
+      <VideoPlayer className={styles.video_container} />
 
       <CallPageHeader
         isMessenger={isMessenger}

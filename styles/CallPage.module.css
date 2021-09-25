@@ -1,0 +1,7 @@
+.video_container {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+}

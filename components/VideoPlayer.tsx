@@ -37,20 +37,14 @@ const VideoPlayer = (props: any) => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.gridContainer}>
+    <Grid>
       {stream && (
-        <Paper className={classes.paper}>
+        <Paper>
           <Grid item xs={12} md={6}>
             <Typography variant="h5" gutterBottom>
               {name || "Name"}
             </Typography>
-            <video
-              playsInline
-              muted
-              ref={myVideo}
-              autoPlay
-              className={classes.video}
-            />
+            <video playsInline muted ref={myVideo} autoPlay />
           </Grid>
         </Paper>
       )}
