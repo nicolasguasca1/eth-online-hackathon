@@ -14,11 +14,7 @@ const Login = () => {
   const { authenticate, isAuthenticating, isAuthenticated, authError } =
     useMoralis();
   useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/home");
-    } else {
-      <Home />;
-    }
+    if (isAuthenticated) router.push("/home");
   }, [isAuthenticated]);
 
   return (

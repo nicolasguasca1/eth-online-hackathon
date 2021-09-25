@@ -3,7 +3,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faKeyboard } from "@fortawesome/free-solid-svg-icons";
 // import shortid from "shortid";
-// import "./HomePage.scss";
 import Page from "../components/UI/Page";
 import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 

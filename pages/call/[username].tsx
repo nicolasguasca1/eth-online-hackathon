@@ -51,11 +51,7 @@ const Call = (props: any) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push("/login");
-    } else {
-      <Home />;
-    }
+    if (!isAuthenticated) router.push("/login");
   }, [isAuthenticated]);
   getCloud();
 
