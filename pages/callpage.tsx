@@ -1,12 +1,12 @@
 import { useEffect, useReducer, useState } from "react";
-// import { useParams, useHistory } from "react-router-dom";
-// import { getRequest, postRequest } from "../utils/apiRequests";
+// import { useParams, useHistory } from "react-router-dom"; DONE WITH ROUTER
+// import { getRequest, postRequest } from "../utils/apiRequests";  DONE IN SERVER!
 // import { BASE_URL, GET_CALL_ID, SAVE_CALL_ID } from "../utils/apiEndpoints";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styles from "@/styles/CallPage.module.css";
 import Messenger from "../components/UI/Messenger";
-// import MessageListReducer from "../../reducers/MessageListReducer";
+import MessageListReducer from "../reducers/MessageListReducer";
 import Alert from "../components/UI/Alert";
 import MeetingInfo from "../components/UI/MeetingInfo";
 import CallPageFooter from "../components/UI/CallPageFooter";
@@ -17,36 +17,36 @@ import CallPageHeader from "../components/UI/CallPageHeader";
 const initialState = [];
 
 const CallPage = () => {
-  //   const history = useHistory();
-  //   let { id } = useParams();
-  //   const isAdmin = window.location.hash == "#init" ? true : false;
-  //   const url = `${window.location.origin}${window.location.pathname}`;
-  //   let alertTimeout = null;
+  // const history = useHistory();
+  // let { id } = useParams();
+  // const isAdmin = window.location.hash == "#init" ? true : false;
+  // const url = `${window.location.origin}${window.location.pathname}`;
+  let alertTimeout = null;
 
-  //   const [messageList, messageListReducer] = useReducer(
-  //     MessageListReducer,
-  //     initialState
-  //   );
+  const [messageList, messageListReducer] = useReducer(
+    MessageListReducer,
+    initialState
+  );
 
-  //   const [streamObj, setStreamObj] = useState();
-  //   const [screenCastStream, setScreenCastStream] = useState();
-  //   const [meetInfoPopup, setMeetInfoPopup] = useState(false);
-  //   const [isPresenting, setIsPresenting] = useState(false);
-  //   const [isMessenger, setIsMessenger] = useState(false);
-  //   const [messageAlert, setMessageAlert] = useState({});
-  //   const [isAudio, setIsAudio] = useState(true);
+  const [streamObj, setStreamObj] = useState();
+  const [screenCastStream, setScreenCastStream] = useState();
+  const [meetInfoPopup, setMeetInfoPopup] = useState(false);
+  const [isPresenting, setIsPresenting] = useState(false);
+  const [isMessenger, setIsMessenger] = useState(false);
+  const [messageAlert, setMessageAlert] = useState({});
+  const [isAudio, setIsAudio] = useState(true);
 
-  //   useEffect(() => {
-  //     if (isAdmin) {
-  //       setMeetInfoPopup(true);
+  // useEffect(() => {
+  //   if (isAdmin) {
+  //     setMeetInfoPopup(true);
+  //   }
+  //   initWebRTC();
+  //   socket.on("code", (data) => {
+  //     if (data.url === url) {
+  //       peer.signal(data.code);
   //     }
-  //     initWebRTC();
-  //     socket.on("code", (data) => {
-  //       if (data.url === url) {
-  //         peer.signal(data.code);
-  //       }
-  //     });
-  //   }, []);
+  //   });
+  // }, []);
 
   //   const getRecieverCode = async () => {
   //     const response = await getRequest(`${BASE_URL}${GET_CALL_ID}/${id}`);
@@ -137,61 +137,61 @@ const CallPage = () => {
   //       .catch(() => {});
   //   };
 
-  //   const sendMsg = (msg) => {
-  //     peer.send(msg);
-  //     messageListReducer({
-  //       type: "addMessage",
-  //       payload: {
-  //         user: "you",
-  //         msg: msg,
-  //         time: Date.now()
-  //       }
-  //     });
-  //   };
+  // const sendMsg = (msg) => {
+  //   peer.send(msg);
+  //   messageListReducer({
+  //     type: "addMessage",
+  //     payload: {
+  //       user: "you",
+  //       msg: msg,
+  //       time: Date.now()
+  //     }
+  //   });
+  // };
 
-  //   const screenShare = () => {
-  //     navigator.mediaDevices
-  //       .getDisplayMedia({ cursor: true })
-  //       .then((screenStream) => {
+  // const screenShare = () => {
+  //   navigator.mediaDevices
+  //     .getDisplayMedia({ cursor: true })
+  //     .then((screenStream) => {
+  //       peer.replaceTrack(
+  //         streamObj.getVideoTracks()[0],
+  //         screenStream.getVideoTracks()[0],
+  //         streamObj
+  //       );
+  //       setScreenCastStream(screenStream);
+  //       screenStream.getTracks()[0].onended = () => {
   //         peer.replaceTrack(
-  //           streamObj.getVideoTracks()[0],
   //           screenStream.getVideoTracks()[0],
+  //           streamObj.getVideoTracks()[0],
   //           streamObj
   //         );
-  //         setScreenCastStream(screenStream);
-  //         screenStream.getTracks()[0].onended = () => {
-  //           peer.replaceTrack(
-  //             screenStream.getVideoTracks()[0],
-  //             streamObj.getVideoTracks()[0],
-  //             streamObj
-  //           );
-  //         };
-  //         setIsPresenting(true);
-  //       });
-  //   };
-
-  //   const stopScreenShare = () => {
-  //     screenCastStream.getVideoTracks().forEach(function (track) {
-  //       track.stop();
+  //       };
+  //       setIsPresenting(true);
   //     });
-  //     peer.replaceTrack(
-  //       screenCastStream.getVideoTracks()[0],
-  //       streamObj.getVideoTracks()[0],
-  //       streamObj
-  //     );
-  //     setIsPresenting(false);
-  //   };
+  // };
 
-  //   const toggleAudio = (value) => {
-  //     streamObj.getAudioTracks()[0].enabled = value;
-  //     setIsAudio(value);
-  //   };
+  // const stopScreenShare = () => {
+  //   screenCastStream.getVideoTracks().forEach(function (track) {
+  //     track.stop();
+  //   });
+  //   peer.replaceTrack(
+  //     screenCastStream.getVideoTracks()[0],
+  //     streamObj.getVideoTracks()[0],
+  //     streamObj
+  //   );
+  //   setIsPresenting(false);
+  // };
 
-  //   const disconnectCall = () => {
-  //     peer.destroy();
-  //     history.push("/");
-  //     window.location.reload();
-  //   };
+  // const toggleAudio = (value) => {
+  //   streamObj.getAudioTracks()[0].enabled = value;
+  //   setIsAudio(value);
+  // };
+
+  // const disconnectCall = () => {
+  //   peer.destroy();
+  //   history.push("/");
+  //   window.location.reload();
+  // };
 
   return (
     <div className="callpage-container">
@@ -203,15 +203,15 @@ const CallPage = () => {
         messageAlert={messageAlert}
         setMessageAlert={setMessageAlert}
       />
-      <CallPageFooter
+      {/* <CallPageFooter
         isPresenting={isPresenting}
         stopScreenShare={stopScreenShare}
         screenShare={screenShare}
         isAudio={isAudio}
         toggleAudio={toggleAudio}
         disconnectCall={disconnectCall}
-      />
-
+      /> */}
+      {/* 
       {isAdmin && meetInfoPopup && (
         <MeetingInfo setMeetInfoPopup={setMeetInfoPopup} url={url} />
       )}
@@ -223,7 +223,7 @@ const CallPage = () => {
         />
       ) : (
         messageAlert.isPopup && <Alert messageAlert={messageAlert} />
-      )}
+      )} */}
     </div>
   );
 };

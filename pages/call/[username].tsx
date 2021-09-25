@@ -25,13 +25,7 @@ import { Container, Heading } from "@chakra-ui/layout";
 import { useMoralis } from "react-moralis";
 
 import { Moralis } from "moralis";
-import { useEffect } from "react";
-
-const serverUrl = "https://gpcsccfs4eyy.grandmoralis.com:2053/server";
-const appId = "nDoAAbLEDLmP9TArw7fXMikJnSTiB4XJlCDkfo4L";
-
-Moralis.initialize(appId);
-Moralis.serverURL = serverUrl;
+import { useEffect, useReducer, useContext } from "react";
 
 async function getCloud() {
   // Fetch data from external API

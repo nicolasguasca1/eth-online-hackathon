@@ -43,7 +43,9 @@ const CallPageHeader = ({
           <span className={styles.alert_circle_icon}></span>
         )}
       </div>
-      <div className={styles.header_items}>{currentTime}</div>
+      <div className={(styles.header_items, styles.date_block)}>
+        {currentTime}
+      </div>
       <div className={styles.header_items}>
         <FontAwesomeIcon className={styles.profile} icon={faUserCircle} />
       </div>
