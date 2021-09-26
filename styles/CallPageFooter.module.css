@@ -32,7 +32,7 @@
   color: #555;
   font-size: 20px;
 }
-.icon_cent_item:hover {
+.icon_block_cent_item:hover {
   cursor: pointer;
   box-shadow: 0 0 10px #ddd;
 }
@@ -48,7 +48,7 @@
   margin-left: 10px;
   font-size: 20px;
 }
-.icon_foot_item:hover {
+.icon_block_left_item:hover {
   cursor: pointer;
   background: #eee;
 }
@@ -66,7 +66,7 @@
   margin-bottom: 10px;
 }
 
-.icon_left_item {
+.icon_cent_item_red_bg {
   color: #fff;
 }
 .left_item {
@@ -97,7 +97,7 @@
   font-size: 14px;
   font-weight: 500;
 }
-.title:hover {
+.icon_block_right_item:hover {
   cursor: pointer;
   background: #eee;
 }

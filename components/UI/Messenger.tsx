@@ -9,71 +9,108 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { formatDate } from "../../utils/helpers";
 
-const Messenger = ({ setIsMessenger, sendMsg, messageList }: any) => {
+// const Messenger = ({ setIsMessenger, sendMsg, messageList }: any) => {
+//   const [msg, setMsg] = useState("");
+
+//   const handleChangeMsg = (e: any) => {
+//     setMsg(e.target.value);
+//   };
+
+//   const handleKeyDown = (e: any) => {
+//     if (e.key === "Enter") {
+//       sendMsg(msg);
+//       setMsg("");
+//     }
+//   };
+
+//   const handleSendMsg = () => {
+//     sendMsg(msg);
+//     setMsg("");
+//   };
+
+const Messenger = () => {
   const [msg, setMsg] = useState("");
 
   const handleChangeMsg = (e: any) => {
     setMsg(e.target.value);
   };
 
-  const handleKeyDown = (e: any) => {
-    if (e.key === "Enter") {
-      sendMsg(msg);
-      setMsg("");
-    }
-  };
+  // const handleKeyDown = (e: any) => {
+  //   if (e.key === "Enter") {
+  //     sendMsg(msg);
+  //     setMsg("");
+  //   }
+  // };
 
-  const handleSendMsg = () => {
-    sendMsg(msg);
-    setMsg("");
-  };
+  // const handleSendMsg = () => {
+  //   sendMsg(msg);
+  //   setMsg("");
+  // };
 
   return (
     <div className={styles.messenger_container}>
       <div className={styles.messenger_header}>
         <h3 className={styles.h3}>Meeting details</h3>
         <FontAwesomeIcon
-          className={styles.icon}
+          className={styles.icon_messenger_container}
           icon={faTimes}
-          onClick={() => {
-            setIsMessenger(false);
-          }}
+          // onClick={() => {
+          //   setIsMessenger(false);
+          // }}
         />
       </div>
 
       <div className={styles.messenger_header_tabs}>
         <div className={styles.tab}>
-          <FontAwesomeIcon className={styles.icon} icon={faUserFriends} />
-          <p>People (1)</p>
+          <FontAwesomeIcon
+            className={styles.icon_messenger_container}
+            icon={faUserFriends}
+          />
+          <p className={styles.p}>People (1)</p>
         </div>
-        <div className={(styles.tab, styles.active)}>
-          <FontAwesomeIcon className={styles.icon} icon={faCommentAlt} />
-          <p>Chat</p>
+        <div className={styles.active}>
+          <FontAwesomeIcon
+            className={styles.icon_messenger_container}
+            icon={faCommentAlt}
+          />
+          <p className={styles.p}>Chat</p>
         </div>
       </div>
 
       <div className={styles.chat_section}>
-        {messageList.map((item: any) => (
-          <div key={item.time} className={styles.chat_block}>
-            <div className={styles.sender}>
-              {item.user} <small>{formatDate(item.time)}</small>
-            </div>
-            <p className={styles.msg}>{item.msg}</p>
+        {/* {messageList.map((item: any) => ( */}
+        <div
+          // key={item.time}
+          className={styles.chat_block}
+        >
+          <div className={styles.sender}>
+            {/* {item.user}  */}
+            you
+            <small className={styles.small}>
+              {/* {formatDate(item.time)} */}
+              10PM
+            </small>
           </div>
-        ))}
+          <p className={styles.msg}>
+            {/* {item.msg} */}
+            Here comes an actual msg
+          </p>
+        </div>
+        {/* ))} */}
       </div>
 
       <div className={styles.send_msg_section}>
         <input
+          className={styles.input}
           placeholder="Send a message to everyone"
           value={msg}
           onChange={(e) => handleChangeMsg(e)}
-          onKeyDown={(e) => handleKeyDown(e)}
+          // onKeyDown={(e) => handleKeyDown(e)}
         />
         <FontAwesomeIcon
-          className={styles.icon}
+          className={styles.icon_send_message_section}
           icon={faPaperPlane}
-          onClick={handleSendMsg}
+          // onClick={handleSendMsg}
         />
       </div>
     </div>

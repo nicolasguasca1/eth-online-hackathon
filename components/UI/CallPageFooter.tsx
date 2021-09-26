@@ -113,7 +113,8 @@ const CallPageFooter = () => {
           // onClick={disconnectCall}
         >
           <FontAwesomeIcon
-            className={`${styles.icon_cent_item} ${styles.red}`}
+            className={styles.icon_cent_item}
+            // className={`${styles.icon_cent_item} ${styles.red}`}
             icon={faPhone}
           />
         </div>
@@ -124,7 +125,8 @@ const CallPageFooter = () => {
       <div className={styles.right_item}>
         <div className={styles.icon_block_right_item}>
           <FontAwesomeIcon
-            className={`${styles.icon_right_item} ${styles.red}`}
+            className={styles.icon_right_item}
+            // className={`${styles.icon_right_item} ${styles.red}`}
             icon={faClosedCaptioning}
           />
           <p className={styles.title}>Turn on captions</p>
@@ -147,7 +149,8 @@ const CallPageFooter = () => {
           // onClick={screenShare}
         >
           <FontAwesomeIcon
-            className={`${styles.icon_right_item} ${styles.red}`}
+            className={styles.icon_right_item}
+            // className={`${styles.icon_right_item} ${styles.red}`}
             icon={faDesktop}
           />
           <p className={styles.title}>Present now</p>
