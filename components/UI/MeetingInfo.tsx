@@ -7,6 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/MeetingInfo.module.css";
 
+import { useContext } from "react";
+import { SocketContext } from "../../Store";
+
 // const MeetingInfo = ({ setMeetInfoPopup, url }: any) => {
 //   return (
 //     <div className={styles.meeting_info_block}>
@@ -50,7 +53,11 @@ import styles from "../../styles/MeetingInfo.module.css";
 //   );
 // };
 
-const MeetingInfo = () => {
+const MeetingInfo = (url: any) => {
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
+    useContext<any>(SocketContext);
+  console.log(me);
+  console.log(url);
   return (
     <div className={styles.meeting_info_block}>
       <div className={styles.meeting_header}>
@@ -63,17 +70,15 @@ const MeetingInfo = () => {
           // }}
         />
       </div>
-      <button className={styles.add_people_btn}>
+      {/* <button className={styles.add_people_btn}>
         <FontAwesomeIcon className={styles.icon_add_ppl} icon={faUser} />
         Add Others
-      </button>
+      </button> */}
       <p className={styles.info_text}>
-        Or share this meeting link with others you want in the meeting
+        Share this link with the person you want in the meeting
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>
-          You should put url with brackets into this span
-        </span>
+        <span className={styles.span}>{`${url}/${me}/`}</span>
         <FontAwesomeIcon
           className={styles.icon_span_meet_link}
           icon={faCopy}

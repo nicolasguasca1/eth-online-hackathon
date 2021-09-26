@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState, useContext } from "react";
 import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 
 import { SocketContext } from "../Store";
+import { useMoralis } from "react-moralis";
 
 const useStyles = makeStyles((theme) => ({
   video: {
@@ -34,6 +35,8 @@ const VideoPlayer = (props: any) => {
     stream,
     call
   }: any = useContext(SocketContext);
+  const { isAuthenticated, logout, user } = useMoralis();
+
   const classes = useStyles();
 
   return (
@@ -42,7 +45,7 @@ const VideoPlayer = (props: any) => {
         <Paper>
           <Grid item xs={12} md={6}>
             <Typography variant="h5" gutterBottom>
-              {name || "Name"}
+              {user?.attributes.username}`s Meeting Room
             </Typography>
             <video playsInline muted ref={myVideo} autoPlay />
           </Grid>

@@ -6,7 +6,9 @@ import * as socketio from "socket.io";
 // import Cors from "cors";
 
 import allowCors from "../pages/api/cors";
+import dotenv from "dotenv";
 
+dotenv.config();
 const port: number = parseInt(process.env.PORT || "5000", 10);
 const dev: boolean = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
@@ -18,8 +20,8 @@ nextApp.prepare().then(async () => {
   const io: socketio.Server = new socketio.Server({
     cors: {
       origin: "*",
-      methods: ["GET", "POST"],
-    },
+      methods: ["GET", "POST"]
+    }
   });
   io.attach(server);
 

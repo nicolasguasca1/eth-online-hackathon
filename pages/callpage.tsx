@@ -23,6 +23,7 @@ const CallPage = () => {
   // let { id } = useParams();
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
+  const url = process.env.URL;
   let alertTimeout = null;
 
   const [messageList, messageListReducer] = useReducer(
@@ -216,7 +217,8 @@ const CallPage = () => {
 
       {/* {isAdmin && meetInfoPopup && ( */}
       <MeetingInfo
-      // setMeetInfoPopup={setMeetInfoPopup} url={url}
+        // setMeetInfoPopup={setMeetInfoPopup}
+        url={url}
       />
       {/* )} */}
       {/* {isMessenger ? ( */}
