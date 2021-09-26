@@ -196,7 +196,7 @@ const CallPage = () => {
   // };
 
   return (
-    <div>
+    <div className={styles.page_container}>
       <VideoPlayer className={styles.video_container} />
 
       <CallPageHeader
@@ -205,14 +205,14 @@ const CallPage = () => {
         messageAlert={messageAlert}
         setMessageAlert={setMessageAlert}
       />
-      {/* <CallPageFooter
-        isPresenting={isPresenting}
-        stopScreenShare={stopScreenShare}
-        screenShare={screenShare}
-        isAudio={isAudio}
-        toggleAudio={toggleAudio}
-        disconnectCall={disconnectCall}
-      /> */}
+      <CallPageFooter
+      // isPresenting={isPresenting}
+      // stopScreenShare={stopScreenShare}
+      // screenShare={screenShare}
+      // isAudio={isAudio}
+      // toggleAudio={toggleAudio}
+      // disconnectCall={disconnectCall}
+      />
 
       {/* {isAdmin && meetInfoPopup && ( */}
       <MeetingInfo
