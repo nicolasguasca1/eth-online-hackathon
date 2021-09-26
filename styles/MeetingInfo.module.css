@@ -48,6 +48,22 @@
   padding: 15px;
   border-radius: 5px;
 }
+
+.meeting_info_block {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  width: 310px;
+}
+.meeting_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #222;
+}
 .permission_text {
   display: flex;
   align-items: center;

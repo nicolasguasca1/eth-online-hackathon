@@ -213,11 +213,13 @@ const CallPage = () => {
         toggleAudio={toggleAudio}
         disconnectCall={disconnectCall}
       /> */}
-      {/* 
-      {isAdmin && meetInfoPopup && (
-        <MeetingInfo setMeetInfoPopup={setMeetInfoPopup} url={url} />
-      )}
-      {isMessenger ? (
+
+      {/* {isAdmin && meetInfoPopup && ( */}
+      <MeetingInfo
+      // setMeetInfoPopup={setMeetInfoPopup} url={url}
+      />
+      {/* )} */}
+      {/* {isMessenger ? (
         <Messenger
           setIsMessenger={setIsMessenger}
           sendMsg={sendMsg}
