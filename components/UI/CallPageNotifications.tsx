@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { Button, Container } from "@material-ui/core";
 
+import styles from "../../styles/CallPageFooter.module.css";
+
 import { SocketContext } from "../../Store";
 
 const CallPageNotifications = () => {
   const { answerCall, call, callAccepted } = useContext<any>(SocketContext);
 
   return (
-    <Container>
+    <div className={styles.icon_block_left_item}>
       {call.isReceivingCall && !callAccepted && (
         <div>
           <h1>{call.name} is calling!</h1>
@@ -16,7 +18,7 @@ const CallPageNotifications = () => {
           </Button>
         </div>
       )}
-    </Container>
+    </div>
   );
 };
 

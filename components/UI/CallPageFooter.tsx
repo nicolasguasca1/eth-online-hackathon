@@ -14,6 +14,8 @@ import { SocketContext } from "../../Store";
 import { useRouter } from "next/router";
 import React, { useState, useContext, ReactChildren, ReactChild } from "react";
 
+import CallPageNotifications from "./CallPageNotifications";
+
 // const CallPageFooter = ({
 //   isPresenting,
 //   stopScreenShare,
@@ -105,6 +107,8 @@ const CallPageFooter = ({ setMeetInfoPopup }) => {
           />
         </div>
       </div>
+      <CallPageNotifications />
+
       <div className={styles.center_item}>
         <div
           className={styles.icon_block_cent_item}
@@ -121,6 +125,7 @@ const CallPageFooter = ({ setMeetInfoPopup }) => {
             // icon={isAudio ? faMicrophone : faMicrophoneSlash}
           />
         </div>
+
         <div
           className={styles.icon_block_cent_item}
           onClick={() => {
