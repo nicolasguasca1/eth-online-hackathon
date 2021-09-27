@@ -28,7 +28,7 @@ import { formatDate } from "../../utils/helpers";
 //     setMsg("");
 //   };
 
-const Messenger = () => {
+const Messenger = ({ setIsMessenger }) => {
   const [msg, setMsg] = useState("");
 
   const handleChangeMsg = (e: any) => {
@@ -54,9 +54,9 @@ const Messenger = () => {
         <FontAwesomeIcon
           className={styles.icon_messenger_container}
           icon={faTimes}
-          // onClick={() => {
-          //   setIsMessenger(false);
-          // }}
+          onClick={() => {
+            setIsMessenger(false);
+          }}
         />
       </div>
 

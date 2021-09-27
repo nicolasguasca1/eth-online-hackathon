@@ -258,15 +258,15 @@ const CallPage = () => {
       {isAuthenticated && meetInfoPopup && (
         <MeetingInfo setMeetInfoPopup={setMeetInfoPopup} />
       )}
-      {/* {isMessenger ? ( */}
-      <Messenger
-      // setIsMessenger={setIsMessenger}
-      // sendMsg={sendMsg}
-      // messageList={messageList}
-      />
-      {/* ) : (
+      {isMessenger ? (
+        <Messenger
+          setIsMessenger={setIsMessenger}
+          // sendMsg={sendMsg}
+          // messageList={messageList}
+        />
+      ) : (
         messageAlert.isPopup && <Alert messageAlert={messageAlert} />
-      )} */}
+      )}
     </div>
   );
 };
