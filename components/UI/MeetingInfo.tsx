@@ -10,6 +10,7 @@ import styles from "../../styles/MeetingInfo.module.css";
 import { useContext } from "react";
 import { SocketContext } from "../../Store";
 import { useMoralis } from "react-moralis";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { useRouter } from "next/router";
 
@@ -85,11 +86,13 @@ const MeetingInfo = () => {
       </p>
       <div className={styles.meet_link}>
         <span className={styles.span}>{`${url}`}</span>
-        <FontAwesomeIcon
-          className={styles.icon_span_meet_link}
-          icon={faCopy}
-          // onClick={() => navigator.clipboard.writeText(url)}
-        />
+        <CopyToClipboard text={url}>
+          <FontAwesomeIcon
+            className={styles.icon_span_meet_link}
+            icon={faCopy}
+            // onClick={() => navigator.clipboard.writeText(url)}
+          />
+        </CopyToClipboard>
       </div>
       <div className={styles.permission_text}>
         <FontAwesomeIcon
