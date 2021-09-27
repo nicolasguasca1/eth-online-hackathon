@@ -11,6 +11,8 @@ import Alert from "../components/UI/Alert";
 import MeetingInfo from "../components/UI/MeetingInfo";
 import CallPageFooter from "../components/UI/CallPageFooter";
 import CallPageHeader from "../components/UI/CallPageHeader";
+import Notifications from "../components/Notifications";
+import CallPageNotifications from "../components/UI/CallPageNotifications";
 
 import VideoPlayer from "../components/VideoPlayer";
 
@@ -245,6 +247,9 @@ const CallPage = () => {
         messageAlert={messageAlert}
         setMessageAlert={setMessageAlert}
       />
+      {/* <CallPageOptions> */}
+      <CallPageNotifications />
+      {/* </CallPageOptions> */}
       <CallPageFooter
         setMeetInfoPopup={setMeetInfoPopup}
         // isPresenting={isPresenting}

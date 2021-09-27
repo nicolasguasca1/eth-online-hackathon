@@ -85,7 +85,7 @@ const MeetingInfo = ({ setMeetInfoPopup }) => {
         Share this link with the person you want in the meeting
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>{`${url}`}</span>
+        <span className={styles.span}>{`${url}/${me}`}</span>
         <CopyToClipboard text={url}>
           <FontAwesomeIcon
             className={styles.icon_span_meet_link}

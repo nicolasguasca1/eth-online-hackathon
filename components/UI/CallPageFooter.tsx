@@ -10,6 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/CallPageFooter.module.css";
 
+import { SocketContext } from "../../Store";
+import { useRouter } from "next/router";
+import React, { useState, useContext, ReactChildren, ReactChild } from "react";
+
 // const CallPageFooter = ({
 //   isPresenting,
 //   stopScreenShare,
@@ -84,6 +88,9 @@ import styles from "../../styles/CallPageFooter.module.css";
 // };
 
 const CallPageFooter = ({ setMeetInfoPopup }) => {
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
+    useContext<any>(SocketContext);
+  const router = useRouter();
   return (
     <div className={styles.footer_item}>
       <div className={styles.left_item}>
@@ -116,11 +123,14 @@ const CallPageFooter = ({ setMeetInfoPopup }) => {
         </div>
         <div
           className={styles.icon_block_cent_item}
-          // onClick={disconnectCall}
+          onClick={() => {
+            leaveCall();
+            router.push("/home");
+          }}
         >
           <FontAwesomeIcon
-            className={styles.icon_cent_item}
-            // className={`${styles.icon_cent_item} ${styles.red}`}
+            // className={styles.icon_cent_item}
+            className={`${styles.icon_cent_item} ${styles.red}`}
             icon={faPhone}
           />
         </div>
