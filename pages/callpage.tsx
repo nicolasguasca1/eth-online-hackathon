@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState, useContext } from "react";
 // import { useParams, useHistory } from "react-router-dom"; DONE WITH ROUTER
 // import { getRequest, postRequest } from "../utils/apiRequests";  DONE IN SERVER!
 // import { BASE_URL, GET_CALL_ID, SAVE_CALL_ID } from "../utils/apiEndpoints";
@@ -21,6 +21,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { useMoralis } from "react-moralis";
 import { Moralis } from "moralis";
+
+import { SocketContext } from "../Store";
 
 // async function getCloud() {
 //   // Fetch data from external API
@@ -65,7 +67,7 @@ const CallPage = () => {
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
   let alertTimeout = null;
-
+  const { isAdmin } = useContext<any>(SocketContext);
   const [messageList, messageListReducer] = useReducer(
     MessageListReducer,
     initialState
@@ -81,7 +83,7 @@ const CallPage = () => {
   const [isAudio, setIsAudio] = useState(true);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAdmin) {
       setMeetInfoPopup(true);
     }
     // initWebRTC();
@@ -90,7 +92,7 @@ const CallPage = () => {
     //     peer.signal(data.code);
     //   }
     // });
-  }, [isAuthenticated]);
+  }, [isAdmin]);
 
   //   const getRecieverCode = async () => {
   //     const response = await getRequest(`${BASE_URL}${GET_CALL_ID}/${id}`);

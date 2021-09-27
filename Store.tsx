@@ -14,6 +14,7 @@ const ContextProvider = ({ children }: any) => {
   const [name, setName] = useState("");
   const [call, setCall] = useState<any>({});
   const [me, setMe] = useState("");
+  const [isAdmin, setAdmin] = useState(false);
 
   const myVideo = useRef<HTMLVideoElement>(null!);
   const userVideo = useRef<HTMLVideoElement>(null!);
@@ -97,6 +98,8 @@ const ContextProvider = ({ children }: any) => {
         setName,
         callEnded,
         me,
+        isAdmin,
+        setAdmin,
         callUser,
         leaveCall,
         answerCall

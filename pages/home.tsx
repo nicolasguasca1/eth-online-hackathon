@@ -20,8 +20,18 @@ import Spinner from "@chakra-ui/react";
 
 const Home = (props: any) => {
   // const history = useHistory();
-  //   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-  //     useContext<any>(SocketContext);
+  const {
+    me,
+    setAdmin,
+    callAccepted,
+    name,
+    setName,
+    callEnded,
+    leaveCall,
+    callUser
+  } = useContext<any>(SocketContext);
+  const [idToCall, setIdToCall] = useState("");
+
   // const startCall = () => {
   //   const uid = shortid.generate();
   //   history.push(`/${uid}#init`);
@@ -51,8 +61,9 @@ const Home = (props: any) => {
             <div className={styles.action_btn}>
               <Link
                 passHref
-                href="/call/[username]"
-                as={`/call/${user?.attributes.username}`}
+                // href="/call/[username]"
+                // as={`/call/${user?.attributes.username}`}
+                href="/callpage"
               >
                 <Button
                   isLoading={isAuthenticating}
@@ -61,6 +72,7 @@ const Home = (props: any) => {
                   variant="outline"
                   spinnerPlacement="start"
                   className={styles.btn}
+                  onClick={() => setAdmin(true)}
                 >
                   New Meeting
                 </Button>
@@ -73,10 +85,59 @@ const Home = (props: any) => {
                       pointerEvents="none"
                       children={<ExternalLinkIcon color="gray.300" />}
                     />
-                    <Input placeholder="Enter a code or link" />
+                    <Input
+                      placeholder="Enter a code or link"
+                      onChange={(e) => setIdToCall(e.target.value)}
+                    />
                   </InputGroup>
                 </div>
-                <button className={styles.btn}>Join</button>
+                {/* {callAccepted && !callEnded ? (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<PhoneDisabled fontSize="large" />}
+                    fullWidth
+                    onClick={leaveCall}
+                    // className={classes.margin}
+                  >
+                    Hang Up
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<Phone fontSize="large" />}
+                    fullWidth
+                    onClick={() => callUser(idToCall)}
+                    // className={classes.margin}
+                  >
+                    Call
+                  </Button>
+                )} */}
+                {callAccepted && !callEnded ? (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<PhoneDisabled fontSize="large" />}
+                    fullWidth
+                    onClick={leaveCall}
+                    // className={classes.margin}
+                  >
+                    Hang Up
+                  </Button>
+                ) : (
+                  <button
+                    className={styles.btn}
+                    onClick={() => callUser(idToCall)}
+                  >
+                    Join
+                  </button>
+                )}
+                {/* <button
+                  className={styles.btn}
+                >
+                  Join
+                </button> */}
               </div>
             </div>
           </div>
