@@ -13,17 +13,41 @@ import CallPageFooter from "../components/UI/CallPageFooter";
 import CallPageHeader from "../components/UI/CallPageHeader";
 
 import VideoPlayer from "../components/VideoPlayer";
+import { useRouter } from "next/router";
+
+import Page from "../components/UI/Page";
+import Link from "next/link";
+import { useMoralis } from "react-moralis";
 
 // let peer = null;
 // const socket = io.connect(process.env.REACT_APP_BASE_URL);
 const initialState = [];
 
 const CallPage = () => {
+  const router = useRouter();
+  const { isAuthenticated, logout, user } = useMoralis();
+
+  if (!isAuthenticated) {
+    return (
+      <Page>
+        <div className={styles.no_match_content}>
+          <h2 className={styles.h2_no_match}>
+            Please login first to access a call.
+          </h2>
+          <div className={styles.btn_no_match}>
+            <Link passHref href="/login">
+              Login
+            </Link>
+          </div>
+        </div>
+      </Page>
+    );
+  }
   // const history = useHistory();
   // let { id } = useParams();
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
-  const url = process.env.URL;
+  const url = process.env.NEXT_PUBLIC_URL;
   let alertTimeout = null;
 
   const [messageList, messageListReducer] = useReducer(

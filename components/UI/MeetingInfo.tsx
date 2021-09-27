@@ -9,6 +9,7 @@ import styles from "../../styles/MeetingInfo.module.css";
 
 import { useContext } from "react";
 import { SocketContext } from "../../Store";
+import { useMoralis } from "react-moralis";
 
 // const MeetingInfo = ({ setMeetInfoPopup, url }: any) => {
 //   return (
@@ -53,11 +54,11 @@ import { SocketContext } from "../../Store";
 //   );
 // };
 
-const MeetingInfo = (url: any) => {
+const MeetingInfo = (props) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
-  console.log(me);
-  console.log(url);
+  const { isAuthenticated, logout, user } = useMoralis();
+
   return (
     <div className={styles.meeting_info_block}>
       <div className={styles.meeting_header}>
@@ -78,7 +79,7 @@ const MeetingInfo = (url: any) => {
         Share this link with the person you want in the meeting
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>{`${url}/${me}/`}</span>
+        <span className={styles.span}>{`${props.url}/${me}`}</span>
         <FontAwesomeIcon
           className={styles.icon_span_meet_link}
           icon={faCopy}
@@ -95,7 +96,7 @@ const MeetingInfo = (url: any) => {
           can join.
         </p>
       </div>
-      <p className={styles.small_text}>Joined as akshay@gmail.com</p>
+      <p className={styles.small_text}>Joined as {user.attributes.username}</p>
     </div>
   );
 };
