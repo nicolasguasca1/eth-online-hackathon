@@ -13,7 +13,6 @@ import CallPageFooter from "../components/UI/CallPageFooter";
 import CallPageHeader from "../components/UI/CallPageHeader";
 
 import VideoPlayer from "../components/VideoPlayer";
-import { useRouter } from "next/router";
 
 import Page from "../components/UI/Page";
 import Link from "next/link";
@@ -24,7 +23,6 @@ import { useMoralis } from "react-moralis";
 const initialState = [];
 
 const CallPage = () => {
-  const router = useRouter();
   const { isAuthenticated, isUnauthenticated, logout, user }: any =
     useMoralis();
 

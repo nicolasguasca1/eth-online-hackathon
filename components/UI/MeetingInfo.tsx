@@ -11,6 +11,8 @@ import { useContext } from "react";
 import { SocketContext } from "../../Store";
 import { useMoralis } from "react-moralis";
 
+import { useRouter } from "next/router";
+
 // const MeetingInfo = ({ setMeetInfoPopup, url }: any) => {
 //   return (
 //     <div className={styles.meeting_info_block}>
@@ -58,7 +60,9 @@ const MeetingInfo = () => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
   const { isAuthenticated, logout, user }: any = useMoralis();
-  const url = process.env.NEXT_PUBLIC_URL;
+  const router = useRouter();
+
+  const url = `${process.env.NEXT_PUBLIC_URL}${router.asPath}`;
 
   return (
     <div className={styles.meeting_info_block}>
@@ -80,7 +84,7 @@ const MeetingInfo = () => {
         Share this link with the person you want in the meeting
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>{`${url}/${me}`}</span>
+        <span className={styles.span}>{`${url}`}</span>
         <FontAwesomeIcon
           className={styles.icon_span_meet_link}
           icon={faCopy}
