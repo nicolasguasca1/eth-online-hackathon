@@ -221,46 +221,39 @@ const CallPage = () => {
   // };
 
   return (
-    <>
-      <Head>
-        <title>Video-Calls ETH POC</title>
-        <meta name="description" content="VIDEO-CALLS" />
-        <link rel="icon" href="/squared.png" />
-      </Head>
-      <div className={styles.page_container}>
-        <VideoPlayer className={styles.video_container} />
+    <div className={styles.page_container}>
+      <VideoPlayer className={styles.video_container} />
 
-        <CallPageHeader
-          isMessenger={isMessenger}
-          setIsMessenger={setIsMessenger}
-          messageAlert={messageAlert}
-          setMessageAlert={setMessageAlert}
-        />
-        <CallPageFooter
-        // isPresenting={isPresenting}
-        // stopScreenShare={stopScreenShare}
-        // screenShare={screenShare}
-        // isAudio={isAudio}
-        // toggleAudio={toggleAudio}
-        // disconnectCall={disconnectCall}
-        />
+      <CallPageHeader
+        isMessenger={isMessenger}
+        setIsMessenger={setIsMessenger}
+        messageAlert={messageAlert}
+        setMessageAlert={setMessageAlert}
+      />
+      <CallPageFooter
+      // isPresenting={isPresenting}
+      // stopScreenShare={stopScreenShare}
+      // screenShare={screenShare}
+      // isAudio={isAudio}
+      // toggleAudio={toggleAudio}
+      // disconnectCall={disconnectCall}
+      />
 
-        {/* {isAdmin && meetInfoPopup && ( */}
-        <MeetingInfo
-        // setMeetInfoPopup={setMeetInfoPopup}
-        />
-        {/* )} */}
-        {/* {isMessenger ? ( */}
-        <Messenger
-        // setIsMessenger={setIsMessenger}
-        // sendMsg={sendMsg}
-        // messageList={messageList}
-        />
-        {/* ) : (
+      {/* {isAdmin && meetInfoPopup && ( */}
+      <MeetingInfo
+      // setMeetInfoPopup={setMeetInfoPopup}
+      />
+      {/* )} */}
+      {/* {isMessenger ? ( */}
+      <Messenger
+      // setIsMessenger={setIsMessenger}
+      // sendMsg={sendMsg}
+      // messageList={messageList}
+      />
+      {/* ) : (
         messageAlert.isPopup && <Alert messageAlert={messageAlert} />
       )} */}
-      </div>
-    </>
+    </div>
   );
 };
 export default CallPage;
