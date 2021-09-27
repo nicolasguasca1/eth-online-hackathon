@@ -28,12 +28,13 @@ const Home = (props: any) => {
   // };
   const router = useRouter();
   // const { id } = router.query;
-  const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticating, isAuthenticated, isUnauthenticated, logout, user } =
+    useMoralis();
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isUnauthenticated) {
       router.push("/login");
     }
-  }, [isAuthenticated]);
+  }, [isUnauthenticated]);
 
   return (
     <Page>

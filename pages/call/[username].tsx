@@ -40,11 +40,11 @@ async function getCloud() {
   // return cloud;
 }
 const Call = (props: any) => {
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
   // const username = user?.attributes.username;
   const router = useRouter();
 
-  if (!isAuthenticated) {
+  if (isUnauthenticated) {
     return (
       <Page>
         <div className={styles.no_match_content}>

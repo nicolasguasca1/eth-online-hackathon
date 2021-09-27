@@ -19,17 +19,17 @@ import Home from "./home";
 import Page from "components/UI/Page";
 
 const Landing: NextPage = () => {
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
   const username = user?.attributes.username;
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isUnauthenticated) {
       router.push("/login");
     } else {
       <Home />;
     }
-  }, [isAuthenticated]);
+  }, [isUnauthenticated]);
 
   return (
     <Page>

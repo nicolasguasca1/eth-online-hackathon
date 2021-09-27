@@ -44,9 +44,11 @@ const VideoPlayer = (props: any) => {
       {stream && (
         <Paper>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
+            {/* <Typography 
+            variant="h5" 
+            gutterBottom>
               {user?.attributes.username}`s Meeting Room
-            </Typography>
+            </Typography> */}
             <video playsInline muted ref={myVideo} autoPlay />
           </Grid>
         </Paper>

@@ -25,9 +25,10 @@ const initialState = [];
 
 const CallPage = () => {
   const router = useRouter();
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticated, isUnauthenticated, logout, user }: any =
+    useMoralis();
 
-  if (!isAuthenticated) {
+  if (isUnauthenticated) {
     return (
       <Page>
         <div className={styles.no_match_content}>
@@ -47,7 +48,7 @@ const CallPage = () => {
   // let { id } = useParams();
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
-  const url = process.env.NEXT_PUBLIC_URL;
+  const username = "soy yo";
   let alertTimeout = null;
 
   const [messageList, messageListReducer] = useReducer(
@@ -241,8 +242,7 @@ const CallPage = () => {
 
       {/* {isAdmin && meetInfoPopup && ( */}
       <MeetingInfo
-        // setMeetInfoPopup={setMeetInfoPopup}
-        url={url}
+      // setMeetInfoPopup={setMeetInfoPopup}
       />
       {/* )} */}
       {/* {isMessenger ? ( */}

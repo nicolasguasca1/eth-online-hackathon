@@ -1,4 +1,4 @@
-.btn {
+.btn_no_match {
   cursor: pointer;
   font-size: 16px;
   padding: 15px;
@@ -8,7 +8,7 @@
   border-radius: 5px;
   text-decoration: none;
 }
-.h2 {
+.h2_no_match {
   font-size: 38px;
   font-weight: 300;
 }

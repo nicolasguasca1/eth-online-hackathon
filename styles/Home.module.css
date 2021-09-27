@@ -25,6 +25,17 @@
   text-decoration: none;
 }
 
+.btn_no_match {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 .card {
   margin: 1rem;
   overflow: hidden;
@@ -117,6 +128,10 @@
   font-weight: 400;
   margin: 10px;
 }
+.h2_no_match {
+  font-size: 38px;
+  font-weight: 300;
+}
 
 .header {
   width: 100%;
@@ -192,6 +207,14 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.no_match_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .p {

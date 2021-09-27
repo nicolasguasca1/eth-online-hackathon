@@ -54,10 +54,11 @@ import { useMoralis } from "react-moralis";
 //   );
 // };
 
-const MeetingInfo = (props) => {
+const MeetingInfo = () => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
-  const { isAuthenticated, logout, user } = useMoralis();
+  const { isAuthenticated, logout, user }: any = useMoralis();
+  const url = process.env.NEXT_PUBLIC_URL;
 
   return (
     <div className={styles.meeting_info_block}>
@@ -79,7 +80,7 @@ const MeetingInfo = (props) => {
         Share this link with the person you want in the meeting
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>{`${props.url}/${me}`}</span>
+        <span className={styles.span}>{`${url}/${me}`}</span>
         <FontAwesomeIcon
           className={styles.icon_span_meet_link}
           icon={faCopy}
@@ -96,7 +97,9 @@ const MeetingInfo = (props) => {
           can join.
         </p>
       </div>
-      <p className={styles.small_text}>Joined as {user.attributes.username}</p>
+      <p className={styles.small_text}>
+        Joined as {user?.attributes.username}{" "}
+      </p>
     </div>
   );
 };
