@@ -83,13 +83,19 @@ import styles from "../../styles/CallPageFooter.module.css";
 //   );
 // };
 
-const CallPageFooter = () => {
+const CallPageFooter = ({ setMeetInfoPopup }) => {
   return (
     <div className={styles.footer_item}>
       <div className={styles.left_item}>
         <div className={styles.icon_block_left_item}>
           Meeting details
-          <FontAwesomeIcon className={styles.icon_left_item} icon={faAngleUp} />
+          <FontAwesomeIcon
+            className={styles.icon_left_item}
+            icon={faAngleUp}
+            onClick={() => {
+              setMeetInfoPopup(true);
+            }}
+          />
         </div>
       </div>
       <div className={styles.center_item}>

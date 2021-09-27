@@ -57,7 +57,7 @@ import { useRouter } from "next/router";
 //   );
 // };
 
-const MeetingInfo = (setMeetInfoPopup) => {
+const MeetingInfo = ({ setMeetInfoPopup }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
   const { isAuthenticated, logout, user }: any = useMoralis();
@@ -72,9 +72,9 @@ const MeetingInfo = (setMeetInfoPopup) => {
         <FontAwesomeIcon
           className={styles.icon}
           icon={faTimes}
-          // onClick={() => {
-          //   setMeetInfoPopup(false);
-          // }}
+          onClick={() => {
+            setMeetInfoPopup(false);
+          }}
         />
       </div>
       {/* <button className={styles.add_people_btn}>

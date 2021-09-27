@@ -246,12 +246,13 @@ const CallPage = () => {
         setMessageAlert={setMessageAlert}
       />
       <CallPageFooter
-      // isPresenting={isPresenting}
-      // stopScreenShare={stopScreenShare}
-      // screenShare={screenShare}
-      // isAudio={isAudio}
-      // toggleAudio={toggleAudio}
-      // disconnectCall={disconnectCall}
+        setMeetInfoPopup={setMeetInfoPopup}
+        // isPresenting={isPresenting}
+        // stopScreenShare={stopScreenShare}
+        // screenShare={screenShare}
+        // isAudio={isAudio}
+        // toggleAudio={toggleAudio}
+        // disconnectCall={disconnectCall}
       />
 
       {isAuthenticated && meetInfoPopup && (
