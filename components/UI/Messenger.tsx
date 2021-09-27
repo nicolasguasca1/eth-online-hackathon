@@ -50,7 +50,7 @@ const Messenger = () => {
   return (
     <div className={styles.messenger_container}>
       <div className={styles.messenger_header}>
-        <h3 className={styles.h3}>Meeting details</h3>
+        <h3 className={styles.h3}>Interactions </h3>
         <FontAwesomeIcon
           className={styles.icon_messenger_container}
           icon={faTimes}

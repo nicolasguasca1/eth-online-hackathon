@@ -57,7 +57,7 @@ import { useRouter } from "next/router";
 //   );
 // };
 
-const MeetingInfo = () => {
+const MeetingInfo = (setMeetInfoPopup) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext<any>(SocketContext);
   const { isAuthenticated, logout, user }: any = useMoralis();

@@ -18,6 +18,20 @@ import Page from "../components/UI/Page";
 import Link from "next/link";
 import Head from "next/head";
 import { useMoralis } from "react-moralis";
+import { Moralis } from "moralis";
+
+// async function getCloud() {
+//   // Fetch data from external API
+//   const cloud = await Moralis.Cloud.run("cloud");
+//   const users = cloud.map((ParseUser: { attributes: { username: any } }) => ({
+//     params: {
+//       username: ParseUser.attributes.username
+//     }
+//   }));
+//   console.log(users);
+//   return users;
+//   return cloud;
+// }
 
 // let peer = null;
 // const socket = io.connect(process.env.REACT_APP_BASE_URL);
@@ -26,6 +40,7 @@ const initialState = [];
 const CallPage = () => {
   const { isAuthenticated, isUnauthenticated, logout, user }: any =
     useMoralis();
+  // getCloud();
 
   if (isUnauthenticated) {
     return (
@@ -47,7 +62,6 @@ const CallPage = () => {
   // let { id } = useParams();
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
-  const username = "soy yo";
   let alertTimeout = null;
 
   const [messageList, messageListReducer] = useReducer(
@@ -58,22 +72,23 @@ const CallPage = () => {
   const [streamObj, setStreamObj] = useState();
   const [screenCastStream, setScreenCastStream] = useState();
   const [meetInfoPopup, setMeetInfoPopup] = useState(false);
+
   const [isPresenting, setIsPresenting] = useState(false);
   const [isMessenger, setIsMessenger] = useState(false);
   const [messageAlert, setMessageAlert] = useState({});
   const [isAudio, setIsAudio] = useState(true);
 
-  // useEffect(() => {
-  //   if (isAdmin) {
-  //     setMeetInfoPopup(true);
-  //   }
-  //   initWebRTC();
-  //   socket.on("code", (data) => {
-  //     if (data.url === url) {
-  //       peer.signal(data.code);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    if (isAuthenticated) {
+      setMeetInfoPopup(true);
+    }
+    // initWebRTC();
+    // socket.on("code", (data) => {
+    //   if (data.url === url) {
+    //     peer.signal(data.code);
+    //   }
+    // });
+  }, [isAuthenticated]);
 
   //   const getRecieverCode = async () => {
   //     const response = await getRequest(`${BASE_URL}${GET_CALL_ID}/${id}`);
@@ -239,11 +254,9 @@ const CallPage = () => {
       // disconnectCall={disconnectCall}
       />
 
-      {/* {isAdmin && meetInfoPopup && ( */}
-      <MeetingInfo
-      // setMeetInfoPopup={setMeetInfoPopup}
-      />
-      {/* )} */}
+      {isAuthenticated && meetInfoPopup && (
+        <MeetingInfo setMeetInfoPopup={setMeetInfoPopup} />
+      )}
       {/* {isMessenger ? ( */}
       <Messenger
       // setIsMessenger={setIsMessenger}
