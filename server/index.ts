@@ -9,7 +9,7 @@ import allowCors from "../pages/api/cors";
 import dotenv from "dotenv";
 
 dotenv.config();
-const port: number = parseInt(process.env.PORT || "5000", 10);
+const port: number = parseInt(process.env.SERVER_PORT || "5000", 10);
 const dev: boolean = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const nextHandler: NextApiHandler = nextApp.getRequestHandler();
