@@ -118,7 +118,7 @@ const Home = (props: any) => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    startIcon={<PhoneDisabled fontSize="large" />}
+                    // startIcon={<PhoneDisabled fontSize="large" />}
                     fullWidth
                     onClick={leaveCall}
                     // className={classes.margin}
