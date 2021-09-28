@@ -126,12 +126,25 @@ const Home = (props: any) => {
                     Hang Up
                   </Button>
                 ) : (
-                  <button
-                    className={styles.btn}
-                    onClick={() => callUser(idToCall)}
+                  <Link
+                    passHref
+                    // href="/call/[username]"
+                    // as={`/call/${user?.attributes.username}`}
+                    href="/callpage"
                   >
-                    Join
-                  </button>
+                    <button
+                      className={styles.btn}
+                      onClick={() => callUser(idToCall)}
+                    >
+                      Join
+                    </button>
+                  </Link>
+                  // <button
+                  //   className={styles.btn}
+                  //   onClick={() => callUser(idToCall)}
+                  // >
+                  //   Join
+                  // </button>
                 )}
                 {/* <button
                   className={styles.btn}

@@ -88,7 +88,16 @@ const VideoPlayer = (props: any) => {
         //   </Grid>
         // </Paper>
         <div>
-          <video playsInline muted ref={myVideo} autoPlay />
+          <video
+            className={styles.video}
+            playsInline
+            muted
+            ref={myVideo}
+            autoPlay
+          />
+          <div className={styles.overlay}>
+            <h2 className={styles.overlay_h2}>OVERLAY</h2>
+          </div>
         </div>
       )}
       {callAccepted && !callEnded && (
@@ -106,7 +115,15 @@ const VideoPlayer = (props: any) => {
         //   </Grid>
         // </Paper>
         <div>
-          <video playsInline ref={userVideo} autoPlay />
+          <video
+            className={styles.video}
+            playsInline
+            ref={userVideo}
+            autoPlay
+          />
+          <div className={styles.overlay}>
+            <h2 className={styles.overlay_h2}>OVERLAY2</h2>
+          </div>
         </div>
       )}
     </div>
