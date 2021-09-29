@@ -6,6 +6,9 @@ import React from "react";
 import { MoralisProvider } from "react-moralis";
 import { ContextProvider } from "../Store";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
+config.autoAddCss = false;
 
 const theme = extendTheme({
   config: {
