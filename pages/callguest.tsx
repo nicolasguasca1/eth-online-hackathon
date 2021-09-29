@@ -74,22 +74,6 @@ const CallGuest = () => {
     );
   }
 
-  if (isUnauthenticated) {
-    return (
-      <Page>
-        <div className={styles.no_match_content}>
-          <h2 className={styles.h2_no_match}>
-            Please login first to access a call.
-          </h2>
-          <div className={styles.btn_no_match}>
-            <Link passHref href="/login">
-              Login
-            </Link>
-          </div>
-        </div>
-      </Page>
-    );
-  }
   // const history = useHistory();
   // let { id } = useParams();
   // const isAdmin = window.location.hash == "#init" ? true : false;
@@ -121,18 +105,18 @@ const CallGuest = () => {
     // });
   }, []);
 
-  useEffect(() => {
-    if (callAccepted && !callEnded) {
-      <VideoPlayer className={styles.video_container} />;
-    } else {
-      <div className={styles.no_match_content}>
-        <h2 className={styles.h2_no_match}>
-          Please wait until the host of this room let you in.
-        </h2>
-        <div className={styles.btn_no_match}></div>
-      </div>;
-    }
-  }, [callAccepted]);
+  // useEffect(() => {
+  //   if (callAccepted && !callEnded) {
+  //     <VideoPlayer className={styles.video_container} />;
+  //   } else {
+  //     <div className={styles.no_match_content}>
+  //       <h2 className={styles.h2_no_match}>
+  //         Please wait until the host of this room let you in.
+  //       </h2>
+  //       <div className={styles.btn_no_match}></div>
+  //     </div>;
+  //   }
+  // }, [callAccepted]);
 
   // {
   //   callAccepted && !callEnded ? (
@@ -295,7 +279,7 @@ const CallGuest = () => {
 
   return (
     <div className={styles.page_container}>
-      {/* <VideoPlayer className={styles.video_container} /> */}
+      <VideoPlayer className={styles.video_container} />
 
       <CallPageHeader
         isMessenger={isMessenger}

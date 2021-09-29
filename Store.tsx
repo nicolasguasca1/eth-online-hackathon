@@ -58,8 +58,7 @@ const ContextProvider = ({ children }: any) => {
     });
 
     peer.on("stream", (currentStream) => {
-      if ("srcObject" in userVideo.current)
-        userVideo.current.srcObject = currentStream;
+      if (userVideo.current) userVideo.current.srcObject = currentStream;
     });
 
     peer.signal(call.signal);
