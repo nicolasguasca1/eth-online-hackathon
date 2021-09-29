@@ -126,12 +126,7 @@ const CallPageFooter = ({ setMeetInfoPopup }) => {
           />
         </div>
 
-        <div
-          className={styles.icon_block_cent_item}
-          onClick={() => {
-            leaveCall();
-          }}
-        >
+        <div className={styles.icon_block_cent_item} onClick={leaveCall}>
           <FontAwesomeIcon
             // className={styles.icon_cent_item}
             className={`${styles.icon_cent_item} ${styles.red}`}
