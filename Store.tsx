@@ -2,12 +2,17 @@ import React, { createContext, useState, useRef, useEffect } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
+import { useRouter } from "next/router";
+
+import { useMoralis } from "react-moralis";
+
 const SocketContext = createContext({});
 
 const socket = io("http://localhost:5000");
 // const socket = io("https://warm-wildwood-81069.herokuapp.com");
 
 const ContextProvider = ({ children }: any) => {
+  const router = useRouter();
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState<MediaStream>();
@@ -20,6 +25,9 @@ const ContextProvider = ({ children }: any) => {
   const userVideo = useRef<HTMLVideoElement>(null!);
   const connectionRef = useRef<Peer.Instance>(null!);
 
+  // EXPERIMENTAL
+  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
+
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
@@ -30,7 +38,10 @@ const ContextProvider = ({ children }: any) => {
         }
       });
 
-    socket.on("me", (id) => setMe(id));
+    socket.on("me", (id) => {
+      setMe(id);
+      setName(user?.attributes.username);
+    });
 
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
@@ -77,14 +88,14 @@ const ContextProvider = ({ children }: any) => {
 
       peer.signal(signal);
     });
-
-    connectionRef.current = peer;
+    if (connectionRef.current) connectionRef.current = peer;
   };
 
   function leaveCall() {
     setCallEnded(true);
-    connectionRef.current.destroy();
+    if (connectionRef.current) connectionRef.current.destroy();
     // if (typeof window !== "undefined") window.location.reload();
+    router.push("/home");
   }
 
   return (

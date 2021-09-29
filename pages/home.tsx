@@ -130,7 +130,7 @@ const Home = (props: any) => {
                     passHref
                     // href="/call/[username]"
                     // as={`/call/${user?.attributes.username}`}
-                    href="/callpage"
+                    href="/callguest"
                   >
                     <button
                       className={styles.btn}

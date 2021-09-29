@@ -130,7 +130,6 @@ const CallPageFooter = ({ setMeetInfoPopup }) => {
           className={styles.icon_block_cent_item}
           onClick={() => {
             leaveCall();
-            router.push("/home");
           }}
         >
           <FontAwesomeIcon
