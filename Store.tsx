@@ -46,7 +46,7 @@ const ContextProvider = ({ children }: any) => {
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }, []);
+  }, [isAdmin]);
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -92,6 +92,7 @@ const ContextProvider = ({ children }: any) => {
 
   function leaveCall() {
     setCallEnded(true);
+    setAdmin(false);
     if (connectionRef.current) connectionRef.current.destroy();
     // if (typeof window !== "undefined") window.location.reload();
     router.push("/home");

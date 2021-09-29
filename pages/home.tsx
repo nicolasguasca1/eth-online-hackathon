@@ -71,7 +71,7 @@ const Home = (props: any) => {
                   variant="outline"
                   spinnerPlacement="start"
                   className={styles.btn}
-                  onClick={setAdmin(true)}
+                  onClick={() => setAdmin(true)}
                 >
                   New Meeting
                 </Button>

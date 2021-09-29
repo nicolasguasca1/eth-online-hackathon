@@ -92,7 +92,7 @@ const CallPage = () => {
     //     peer.signal(data.code);
     //   }
     // });
-  }, [isAdmin]);
+  }, []);
 
   //   const getRecieverCode = async () => {
   //     const response = await getRequest(`${BASE_URL}${GET_CALL_ID}/${id}`);

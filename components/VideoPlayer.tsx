@@ -41,12 +41,14 @@ const VideoPlayer = (props: any) => {
   const { isAuthenticated, logout, user } = useMoralis();
 
   useEffect(() => {
-    if (isAdmin === false && callAccepted === false) {
-      <div className={styles.no_match_content}>
-        <h2 className={styles.h2_no_match}>
-          Please wait until the host of this room let you in.
-        </h2>
-        <div className={styles.btn_no_match}></div>
+    if (!isAdmin && !callAccepted) {
+      <div className={styles.grid_container}>
+        <div className={styles.no_match_content}>
+          <h2 className={styles.h2_no_match}>
+            Please wait until the host of this room let you in.
+          </h2>
+          <div className={styles.btn_no_match}></div>
+        </div>
       </div>;
     }
   }, []);
