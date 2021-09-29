@@ -66,7 +66,6 @@ const Home = (props: any) => {
                 href="/callpage"
               >
                 <Button
-                  isLoading={isAuthenticating}
                   loadingText="Loading"
                   colorScheme="teal"
                   variant="outline"

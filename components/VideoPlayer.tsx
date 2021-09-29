@@ -35,10 +35,21 @@ const VideoPlayer = (props: any) => {
     userVideo,
     callEnded,
     stream,
-    call
+    call,
+    isAdmin
   }: any = useContext(SocketContext);
   const { isAuthenticated, logout, user } = useMoralis();
 
+  useEffect(() => {
+    if (isAdmin === false && callAccepted === false) {
+      <div className={styles.no_match_content}>
+        <h2 className={styles.h2_no_match}>
+          Please wait until the host of this room let you in.
+        </h2>
+        <div className={styles.btn_no_match}></div>
+      </div>;
+    }
+  }, []);
   // const classes = useStyles();
 
   //   return (
@@ -101,19 +112,6 @@ const VideoPlayer = (props: any) => {
         </div>
       )}
       {callAccepted && !callEnded && (
-        // <Paper className={classes.paper}>
-        //   <Grid item xs={12} md={6}>
-        //     <Typography variant="h5" gutterBottom>
-        //       {call.name || "Name"}
-        //     </Typography>
-        //     <video
-        //       playsInline
-        //       ref={userVideo}
-        //       autoPlay
-        //       className={classes.video}
-        //     />
-        //   </Grid>
-        // </Paper>
         <div>
           <video
             className={styles.video}
