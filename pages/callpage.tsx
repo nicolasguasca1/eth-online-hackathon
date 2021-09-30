@@ -23,6 +23,7 @@ import { useMoralis } from "react-moralis";
 import { Moralis } from "moralis";
 
 import { SocketContext } from "../Store";
+const socket = io("http://localhost:5000");
 
 // async function getCloud() {
 //   // Fetch data from external API
@@ -67,7 +68,8 @@ const CallPage = () => {
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
   let alertTimeout = null;
-  const { isAdmin } = useContext<any>(SocketContext);
+  const { isAdmin, setStream, myVideo, setMe, setName, setCall } =
+    useContext<any>(SocketContext);
   const [messageList, messageListReducer] = useReducer(
     MessageListReducer,
     initialState
@@ -92,6 +94,26 @@ const CallPage = () => {
     //     peer.signal(data.code);
     //   }
     // });
+  }, []);
+
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((currentStream) => {
+        setStream(currentStream);
+        if (myVideo.current) {
+          myVideo.current.srcObject = currentStream;
+        }
+      });
+
+    socket.on("me", (id) => {
+      setMe(id);
+      setName(user?.attributes.username);
+    });
+
+    socket.on("callUser", ({ from, name: callerName, signal }) => {
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    });
   }, []);
 
   //   const getRecieverCode = async () => {

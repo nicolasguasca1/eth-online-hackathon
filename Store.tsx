@@ -28,25 +28,25 @@ const ContextProvider = ({ children }: any) => {
   // EXPERIMENTAL
   const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
 
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-        if (myVideo.current) {
-          myVideo.current.srcObject = currentStream;
-        }
-      });
+  // useEffect(() => {
+  //   navigator.mediaDevices
+  //     .getUserMedia({ video: true, audio: true })
+  //     .then((currentStream) => {
+  //       setStream(currentStream);
+  //       if (myVideo.current) {
+  //         myVideo.current.srcObject = currentStream;
+  //       }
+  //     });
 
-    socket.on("me", (id) => {
-      setMe(id);
-      setName(user?.attributes.username);
-    });
+  //   socket.on("me", (id) => {
+  //     setMe(id);
+  //     setName(user?.attributes.username);
+  //   });
 
-    socket.on("callUser", ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-    });
-  }, []);
+  //   socket.on("callUser", ({ from, name: callerName, signal }) => {
+  //     setCall({ isReceivingCall: true, from, name: callerName, signal });
+  //   });
+  // }, []);
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -103,19 +103,25 @@ const ContextProvider = ({ children }: any) => {
     <SocketContext.Provider
       value={{
         call,
+        setCall,
         callAccepted,
+        setCallAccepted,
         myVideo,
         userVideo,
         stream,
+        setStream,
         name,
         setName,
         callEnded,
+        setCallEnded,
         me,
+        setMe,
         isAdmin,
         setAdmin,
         callUser,
         leaveCall,
-        answerCall
+        answerCall,
+        router
       }}
     >
       {children}

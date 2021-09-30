@@ -47,8 +47,8 @@ const Home = (props: any) => {
   }, [isUnauthenticated]);
 
   if (callEnded) {
-    router.reload();
-    setAdmin(true);
+    // router.reload();
+    setAdmin(false);
   }
   return (
     <Page>
