@@ -46,6 +46,10 @@ const Home = (props: any) => {
     }
   }, [isUnauthenticated]);
 
+  if (callEnded) {
+    router.reload();
+    setAdmin(true);
+  }
   return (
     <Page>
       <div className={styles.body}>
@@ -71,7 +75,7 @@ const Home = (props: any) => {
                   variant="outline"
                   spinnerPlacement="start"
                   className={styles.btn}
-                  onClick={() => setAdmin(true)}
+                  onClick={setAdmin(true)}
                 >
                   New Meeting
                 </Button>
@@ -129,7 +133,7 @@ const Home = (props: any) => {
                     passHref
                     // href="/call/[username]"
                     // as={`/call/${user?.attributes.username}`}
-                    href="/callguest"
+                    href="/callpage"
                   >
                     <button
                       className={styles.btn}

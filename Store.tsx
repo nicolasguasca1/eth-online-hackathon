@@ -46,7 +46,7 @@ const ContextProvider = ({ children }: any) => {
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }, [isAdmin]);
+  }, []);
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -67,6 +67,7 @@ const ContextProvider = ({ children }: any) => {
   };
 
   const callUser = (id: String) => {
+    setAdmin(false);
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
     peer.on("signal", async (data) => {
