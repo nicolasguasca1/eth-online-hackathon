@@ -101,13 +101,13 @@ const ContextProvider = ({ children }: any) => {
     if (connectionRef.current) connectionRef.current = peer;
   };
 
-  function leaveCall() {
+  const leaveCall = () => {
     setCallEnded(true);
     setAdmin(false);
     if (connectionRef.current) connectionRef.current.destroy();
     // if (typeof window !== "undefined") window.location.reload();
     router.push("/home");
-  }
+  };
 
   return (
     <SocketContext.Provider

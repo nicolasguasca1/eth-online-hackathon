@@ -22,6 +22,7 @@ const Home = (props: any) => {
   const {
     me,
     setAdmin,
+    isAdmin,
     callAccepted,
     name,
     setName,
@@ -29,6 +30,7 @@ const Home = (props: any) => {
     leaveCall,
     callUser,
     setGuest,
+    isGuest,
     isAuthenticating,
     isAuthenticated,
     isUnauthenticated,
@@ -51,7 +53,7 @@ const Home = (props: any) => {
 
   if (callEnded) {
     router.reload();
-    setAdmin(false);
+    // setAdmin(!isAdmin);
   }
   return (
     <Page>

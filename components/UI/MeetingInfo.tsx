@@ -90,11 +90,13 @@ const MeetingInfo = ({ setMeetInfoPopup }) => {
         Add Others
       </button> */}
       <p className={styles.info_text}>
-        Share this link with the person you want in the meeting
+        Share the URL from the address bar of your browser with the person/s you
+        want in the meeting. Alternatively, tell them to join by using this
+        code.
       </p>
       <div className={styles.meet_link}>
-        <span className={styles.span}>{`${url}/${me}`}</span>
-        <CopyToClipboard text={url}>
+        <span className={styles.span}>{`${me}`}</span>
+        <CopyToClipboard text={me}>
           <FontAwesomeIcon
             className={styles.icon_span_meet_link}
             icon={faCopy}
