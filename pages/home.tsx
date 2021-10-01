@@ -9,7 +9,6 @@ import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 import styles from "../styles/Home.module.css";
 
 import { SocketContext } from "../Store";
-import { useMoralis } from "react-moralis";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -28,7 +27,13 @@ const Home = (props: any) => {
     setName,
     callEnded,
     leaveCall,
-    callUser
+    callUser,
+    setGuest,
+    isAuthenticating,
+    isAuthenticated,
+    isUnauthenticated,
+    logout,
+    user
   } = useContext<any>(SocketContext);
   const [idToCall, setIdToCall] = useState("");
 
@@ -38,8 +43,6 @@ const Home = (props: any) => {
   // };
   const router = useRouter();
   // const { id } = router.query;
-  const { isAuthenticating, isAuthenticated, isUnauthenticated, logout, user } =
-    useMoralis();
   useEffect(() => {
     if (isUnauthenticated) {
       router.push("/login");
@@ -137,7 +140,9 @@ const Home = (props: any) => {
                   >
                     <button
                       className={styles.btn}
-                      onClick={() => callUser(idToCall)}
+                      onClick={() => {
+                        callUser(idToCall), setGuest(true);
+                      }}
                     >
                       Join
                     </button>

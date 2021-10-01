@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "../styles/Home.module.css";
-
-import { useMoralis } from "react-moralis";
 
 import { useRouter } from "next/router";
 import { Auth } from "../components/Auth";
 import { Container, Heading } from "@chakra-ui/layout";
 import Page from "components/UI/Page";
-import Home from "./home";
+import { SocketContext } from "../Store";
 
 const Login = () => {
   const router = useRouter();
   const { authenticate, isAuthenticating, isAuthenticated, authError } =
-    useMoralis();
+    useContext<any>(SocketContext);
   useEffect(() => {
     if (isAuthenticated) router.push("/home");
   }, [isAuthenticated]);

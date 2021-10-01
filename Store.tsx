@@ -20,13 +20,24 @@ const ContextProvider = ({ children }: any) => {
   const [call, setCall] = useState<any>({});
   const [me, setMe] = useState("");
   const [isAdmin, setAdmin] = useState(false);
+  const [isGuest, setGuest] = useState(false);
 
   const myVideo = useRef<HTMLVideoElement>(null!);
   const userVideo = useRef<HTMLVideoElement>(null!);
   const connectionRef = useRef<Peer.Instance>(null!);
 
   // EXPERIMENTAL
-  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
+  const {
+    isAuthenticated,
+    isUnauthenticated,
+    logout,
+    user,
+    authenticate,
+    isAuthenticating,
+    authError,
+    signup,
+    login
+  } = useMoralis();
 
   // useEffect(() => {
   //   navigator.mediaDevices
@@ -40,7 +51,6 @@ const ContextProvider = ({ children }: any) => {
 
   //   socket.on("me", (id) => {
   //     setMe(id);
-  //     setName(user?.attributes.username);
   //   });
 
   //   socket.on("callUser", ({ from, name: callerName, signal }) => {
@@ -67,7 +77,7 @@ const ContextProvider = ({ children }: any) => {
   };
 
   const callUser = (id: String) => {
-    setAdmin(false);
+    // setAdmin(false);
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
     peer.on("signal", async (data) => {
@@ -121,7 +131,18 @@ const ContextProvider = ({ children }: any) => {
         callUser,
         leaveCall,
         answerCall,
-        router
+        router,
+        isGuest,
+        setGuest,
+        user,
+        isAuthenticated,
+        isUnauthenticated,
+        logout,
+        authenticate,
+        isAuthenticating,
+        authError,
+        signup,
+        login
       }}
     >
       {children}

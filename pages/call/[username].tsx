@@ -22,8 +22,6 @@ import styles from "../../styles/Home.module.css";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
 
-import { useMoralis } from "react-moralis";
-
 import { Moralis } from "moralis";
 import { useEffect, useReducer, useContext } from "react";
 
@@ -40,7 +38,19 @@ async function getCloud() {
   // return cloud;
 }
 const Call = (props: any) => {
-  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
+  const {
+    me,
+    callAccepted,
+    name,
+    setName,
+    callEnded,
+    leaveCall,
+    callUser,
+    isAuthenticated,
+    isUnauthenticated,
+    logout,
+    user
+  } = useContext<any>(SocketContext);
   // const username = user?.attributes.username;
   const router = useRouter();
 

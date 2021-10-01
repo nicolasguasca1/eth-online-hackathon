@@ -63,7 +63,7 @@
 
 .video {
   position: relative;
-  width: 100%;
+  width: 100vh;
   object-fit: cover;
 }
 .video_container {

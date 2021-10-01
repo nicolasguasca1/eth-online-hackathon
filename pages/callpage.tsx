@@ -19,7 +19,6 @@ import VideoPlayer from "../components/VideoPlayer";
 import Page from "../components/UI/Page";
 import Link from "next/link";
 import Head from "next/head";
-import { useMoralis } from "react-moralis";
 import { Moralis } from "moralis";
 
 import { SocketContext } from "../Store";
@@ -43,10 +42,19 @@ const socket = io("http://localhost:5000");
 const initialState = [];
 
 const CallPage = () => {
-  const { isAuthenticated, isUnauthenticated, logout, user }: any =
-    useMoralis();
   // getCloud();
-
+  const {
+    isAdmin,
+    setStream,
+    myVideo,
+    setMe,
+    setName,
+    setCall,
+    isAuthenticated,
+    isUnauthenticated,
+    logout,
+    user
+  } = useContext<any>(SocketContext);
   if (isUnauthenticated) {
     return (
       <Page>
@@ -68,8 +76,7 @@ const CallPage = () => {
   // const isAdmin = window.location.hash == "#init" ? true : false;
   // const url = `${window.location.origin}${window.location.pathname}`;
   let alertTimeout = null;
-  const { isAdmin, setStream, myVideo, setMe, setName, setCall } =
-    useContext<any>(SocketContext);
+
   const [messageList, messageListReducer] = useReducer(
     MessageListReducer,
     initialState

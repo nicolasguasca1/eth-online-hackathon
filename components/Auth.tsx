@@ -8,18 +8,23 @@ import {
   AlertDescription,
   Text
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useMoralis } from "react-moralis";
+import React, { useState, useContext } from "react";
+import { SocketContext } from "../Store";
 
 import { useRouter } from "next/router";
 
 export const Auth = () => {
-  const { authenticate, isAuthenticating, authError, isAuthenticated } =
-    useMoralis();
+  const {
+    authenticate,
+    isAuthenticating,
+    authError,
+    isAuthenticated,
+    signup,
+    login
+  } = useContext<any>(SocketContext);
   const router = useRouter();
 
   const SignUp = () => {
-    const { signup } = useMoralis();
     const [username, setUsername] = useState<string>(null!);
     const [email, setEmail] = useState<string>(null!);
     const [password, setPassword] = useState<string>(null!);
@@ -50,7 +55,6 @@ export const Auth = () => {
   };
 
   const Login = () => {
-    const { login } = useMoralis();
     const [username, setUsername] = useState<string>(null!);
     const [password, setPassword] = useState<string>(null!);
 

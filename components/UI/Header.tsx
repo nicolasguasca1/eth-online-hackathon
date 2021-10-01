@@ -7,11 +7,12 @@ import {
 import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
+import { SocketContext } from "../../Store";
+import React, { useState, useContext, ReactChildren, ReactChild } from "react";
 
 const Header = () => {
-  const { isAuthenticated, logout, user }: any = useMoralis();
+  const { isAuthenticated, logout, user } = useContext<any>(SocketContext);
   return (
     <div className={styles.header}>
       <div className={styles.logo}>

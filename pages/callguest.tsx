@@ -19,9 +19,6 @@ import VideoPlayer from "../components/VideoPlayer";
 import Page from "../components/UI/Page";
 import Link from "next/link";
 import Head from "next/head";
-import { useMoralis } from "react-moralis";
-import { Moralis } from "moralis";
-
 import { SocketContext } from "../Store";
 
 // async function getCloud() {
@@ -51,10 +48,12 @@ const CallGuest = () => {
     stream,
     call,
     isAdmin,
-    leaveCall
+    leaveCall,
+    isAuthenticated,
+    isUnauthenticated,
+    logout,
+    user
   }: any = useContext(SocketContext);
-  const { isAuthenticated, isUnauthenticated, logout, user }: any =
-    useMoralis();
   // getCloud();
 
   if (isUnauthenticated) {

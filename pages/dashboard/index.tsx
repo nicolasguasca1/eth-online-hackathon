@@ -10,7 +10,6 @@ import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 
 import { SocketContext } from "../../Store";
-import { useMoralis } from "react-moralis";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -21,9 +20,19 @@ import Spinner from "@chakra-ui/react";
 
 const Dashboard = (props: any) => {
   // const history = useHistory();
-  const { isAuthenticating, isAuthenticated, logout, user } = useMoralis();
-  // const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-  //   useContext<any>(SocketContext);
+  const {
+    me,
+    callAccepted,
+    name,
+    setName,
+    callEnded,
+    leaveCall,
+    callUser,
+    isAuthenticating,
+    isAuthenticated,
+    logout,
+    user
+  } = useContext<any>(SocketContext);
   // const startCall = () => {
   //   const uid = shortid.generate();
   //   history.push(`/${uid}#init`);

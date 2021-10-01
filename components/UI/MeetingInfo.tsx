@@ -9,7 +9,6 @@ import styles from "../../styles/MeetingInfo.module.css";
 
 import { useContext } from "react";
 import { SocketContext } from "../../Store";
-import { useMoralis } from "react-moralis";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { useRouter } from "next/router";
@@ -58,9 +57,18 @@ import { useRouter } from "next/router";
 // };
 
 const MeetingInfo = ({ setMeetInfoPopup }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-    useContext<any>(SocketContext);
-  const { isAuthenticated, logout, user }: any = useMoralis();
+  const {
+    me,
+    callAccepted,
+    name,
+    setName,
+    callEnded,
+    leaveCall,
+    callUser,
+    isAuthenticated,
+    logout,
+    user
+  } = useContext<any>(SocketContext);
   const router = useRouter();
 
   const url = `${process.env.NEXT_PUBLIC_URL}${router.asPath}`;

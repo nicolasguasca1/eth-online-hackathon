@@ -4,24 +4,24 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 // import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styles from "../styles/Home.module.css";
 
 import VideoPlayer from "../components/VideoPlayer";
 import Notifications from "../components/Notifications";
 import Options from "../components/Options";
 
-import { useMoralis } from "react-moralis";
 import { Button } from "@chakra-ui/react";
 import { Container, Heading } from "@chakra-ui/layout";
 import Login from "./login";
 import Home from "./home";
 import Page from "components/UI/Page";
 
+import { SocketContext } from "../Store";
+
 const Landing: NextPage = () => {
-  const { isAuthenticated, isUnauthenticated, logout, user } = useMoralis();
-  const username = user?.attributes.username;
   const router = useRouter();
+  const { isUnauthenticated } = useContext<any>(SocketContext);
 
   useEffect(() => {
     if (isUnauthenticated) {
