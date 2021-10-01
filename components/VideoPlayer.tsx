@@ -36,7 +36,7 @@ const VideoPlayer = (props: any) => {
         </div>
       </div>;
     }
-  }, [callAccepted]);
+  }, []);
 
   //   return (
   //     <Grid>
