@@ -2,7 +2,6 @@ import { useEffect, useReducer, useState, useContext } from "react";
 // import { useParams, useHistory } from "react-router-dom"; DONE WITH ROUTER
 // import { getRequest, postRequest } from "../utils/apiRequests";  DONE IN SERVER!
 // import { BASE_URL, GET_CALL_ID, SAVE_CALL_ID } from "../utils/apiEndpoints";
-import io from "socket.io-client";
 import styles from "../styles/CallPage.module.css";
 import Peer from "simple-peer";
 import Messenger from "../components/UI/Messenger";
@@ -23,7 +22,6 @@ import { Moralis } from "moralis";
 
 import { SocketContext } from "../Store";
 // const socket = io("http://localhost:5000");
-const socket = io(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
 
 // async function getCloud() {
 //   // Fetch data from external API
@@ -102,26 +100,6 @@ const CallPage = () => {
     //     peer.signal(data.code);
     //   }
     // });
-  }, []);
-
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-        if (myVideo.current) {
-          myVideo.current.srcObject = currentStream;
-        }
-      });
-
-    socket.on("me", (id) => {
-      setMe(id);
-      setName(user?.attributes.username);
-    });
-
-    socket.on("callUser", ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-    });
   }, []);
 
   //   const getRecieverCode = async () => {
