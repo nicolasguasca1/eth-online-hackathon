@@ -35,9 +35,10 @@ const Home = (props: any) => {
     isAuthenticated,
     isUnauthenticated,
     logout,
-    user
+    user,
+    idToCall,
+    setIdToCall
   } = useContext<any>(SocketContext);
-  const [idToCall, setIdToCall] = useState("");
 
   // const startCall = () => {
   //   const uid = shortid.generate();
@@ -48,13 +49,12 @@ const Home = (props: any) => {
   useEffect(() => {
     if (isUnauthenticated) {
       router.push("/login");
+    } else if (callEnded) {
+      router.reload();
+      // setAdmin(!isAdmin);
     }
-  }, [isUnauthenticated]);
+  }, []);
 
-  if (callEnded) {
-    router.reload();
-    // setAdmin(!isAdmin);
-  }
   return (
     <Page>
       <div className={styles.body}>
@@ -138,7 +138,7 @@ const Home = (props: any) => {
                     passHref
                     // href="/call/[username]"
                     // as={`/call/${user?.attributes.username}`}
-                    href="/callpage"
+                    href="/callguest"
                   >
                     <button
                       className={styles.btn}

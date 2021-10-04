@@ -46,14 +46,12 @@ const CallPage = () => {
     isAdmin,
     setStream,
     myVideo,
-    setMe,
     setName,
-    setCall,
     isAuthenticated,
     isUnauthenticated,
     logout,
     user
-  } = useContext<any>(SocketContext);
+  }: any = useContext(SocketContext);
   if (isUnauthenticated) {
     return (
       <Page>

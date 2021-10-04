@@ -6,8 +6,6 @@ import io from "socket.io-client";
 
 import styles from "../styles/CallPage.module.css";
 
-const socket = io(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
-
 const VideoPlayer = (props: any) => {
   const {
     name,
@@ -16,35 +14,12 @@ const VideoPlayer = (props: any) => {
     userVideo,
     callEnded,
     stream,
-    setStream,
-    setMe,
     setName,
-    setCall,
     call,
     user,
     isAdmin,
     isGuest
   }: any = useContext(SocketContext);
-
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-        if (myVideo.current) {
-          myVideo.current.srcObject = currentStream;
-        }
-      });
-
-    socket.on("me", (id) => {
-      setMe(id);
-      setName(user?.attributes.username);
-    });
-
-    socket.on("callUser", ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-    });
-  }, []);
 
   // useEffect(() => {
   //   if (isGuest && !callAccepted) {

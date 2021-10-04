@@ -8,7 +8,8 @@ import { useMoralis } from "react-moralis";
 
 const SocketContext = createContext({});
 
-const socket = io("http://localhost:5000");
+const socket = io(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
+
 // const socket = io("https://warm-wildwood-81069.herokuapp.com");
 
 const ContextProvider = ({ children }: any) => {
@@ -21,6 +22,7 @@ const ContextProvider = ({ children }: any) => {
   const [me, setMe] = useState("");
   const [isAdmin, setAdmin] = useState(false);
   const [isGuest, setGuest] = useState(false);
+  const [idToCall, setIdToCall] = useState("");
 
   const myVideo = useRef<HTMLVideoElement>(null!);
   const userVideo = useRef<HTMLVideoElement>(null!);
@@ -39,24 +41,24 @@ const ContextProvider = ({ children }: any) => {
     login
   } = useMoralis();
 
-  // useEffect(() => {
-  //   navigator.mediaDevices
-  //     .getUserMedia({ video: true, audio: true })
-  //     .then((currentStream) => {
-  //       setStream(currentStream);
-  //       if (myVideo.current) {
-  //         myVideo.current.srcObject = currentStream;
-  //       }
-  //     });
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((currentStream) => {
+        setStream(currentStream);
+        if (myVideo.current) {
+          myVideo.current.srcObject = currentStream;
+        }
+      });
 
-  //   socket.on("me", (id) => {
-  //     setMe(id);
-  //   });
+    socket.on("me", (id) => {
+      setMe(id);
+    });
 
-  //   socket.on("callUser", ({ from, name: callerName, signal }) => {
-  //     setCall({ isReceivingCall: true, from, name: callerName, signal });
-  //   });
-  // }, []);
+    socket.on("callUser", ({ from, name: callerName, signal }) => {
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    });
+  }, []);
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -113,19 +115,14 @@ const ContextProvider = ({ children }: any) => {
     <SocketContext.Provider
       value={{
         call,
-        setCall,
         callAccepted,
-        setCallAccepted,
         myVideo,
         userVideo,
         stream,
-        setStream,
         name,
         setName,
         callEnded,
-        setCallEnded,
         me,
-        setMe,
         isAdmin,
         setAdmin,
         callUser,
@@ -142,7 +139,9 @@ const ContextProvider = ({ children }: any) => {
         isAuthenticating,
         authError,
         signup,
-        login
+        login,
+        idToCall,
+        setIdToCall
       }}
     >
       {children}
