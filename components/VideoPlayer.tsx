@@ -46,25 +46,25 @@ const VideoPlayer = (props: any) => {
     });
   }, []);
 
-  useEffect(() => {
-    if (isGuest && !callAccepted) {
-      <div className={styles.grid_container}>
-        <div className={styles.no_match_content}>
-          <h2 className={styles.h2_no_match}>
-            Please wait until the host of this room let you in.
-          </h2>
-          <div className={styles.btn_no_match}></div>
-        </div>
-      </div>;
-    } else {
-      <div>
-        <video className={styles.video} playsInline ref={userVideo} autoPlay />
-        <div className={styles.overlay}>
-          <h2 className={styles.overlay_h2}>OVERLAY2</h2>
-        </div>
-      </div>;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isGuest && !callAccepted) {
+  //     <div className={styles.grid_container}>
+  //       <div className={styles.no_match_content}>
+  //         <h2 className={styles.h2_no_match}>
+  //           Please wait until the host of this room let you in.
+  //         </h2>
+  //         <div className={styles.btn_no_match}></div>
+  //       </div>
+  //     </div>;
+  //   } else {
+  //     <div>
+  //       <video className={styles.video} playsInline ref={userVideo} autoPlay />
+  //       <div className={styles.overlay}>
+  //         <h2 className={styles.overlay_h2}>OVERLAY2</h2>
+  //       </div>
+  //     </div>;
+  //   }
+  // }, []);
 
   //   return (
   //     <Grid>
@@ -125,7 +125,7 @@ const VideoPlayer = (props: any) => {
           </div>
         </div>
       )}
-      {/* {callAccepted && !callEnded && (
+      {callAccepted && !callEnded ? (
         <div>
           <video
             className={styles.video}
@@ -137,7 +137,19 @@ const VideoPlayer = (props: any) => {
             <h2 className={styles.overlay_h2}>OVERLAY2</h2>
           </div>
         </div>
-      )} */}
+      ) : (
+        isGuest &&
+        !callAccepted && (
+          <div className={styles.grid_container}>
+            <div className={styles.no_match_content}>
+              <h2 className={styles.h2_no_match}>
+                Please wait until the host of this room let you in.
+              </h2>
+              <div className={styles.btn_no_match}></div>
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 };
