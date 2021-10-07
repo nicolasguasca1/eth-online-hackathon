@@ -20,7 +20,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Moralis } from "moralis";
 
-import { SocketContext } from "../Store";
+import { useSocket, useSocketUpdate } from "../Store";
 // const socket = io("http://localhost:5000");
 
 // async function getCloud() {
@@ -42,16 +42,12 @@ const initialState = [];
 
 const CallPage = () => {
   // getCloud();
-  const {
-    isAdmin,
-    setStream,
-    myVideo,
-    setName,
-    isAuthenticated,
-    isUnauthenticated,
-    logout,
-    user
-  }: any = useContext(SocketContext);
+  const { isAdmin, myVideo, isAuthenticated, isUnauthenticated, user }: any =
+    useSocket();
+  // const {
+  //   setName,
+  //   logout
+  // }: any = useSocketUpdate();
   if (isUnauthenticated) {
     return (
       <Page>

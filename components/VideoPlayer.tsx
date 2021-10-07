@@ -1,25 +1,29 @@
 import React, { useCallback, useEffect, useState, useContext } from "react";
 import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 
-import { SocketContext } from "../Store";
+import { useSocket, useSocketUpdate } from "../Store";
+
 import io from "socket.io-client";
 
 import styles from "../styles/CallPage.module.css";
 
 const VideoPlayer = (props: any) => {
   const {
-    name,
-    callAccepted,
+    isAdmin,
     myVideo,
+    callAccepted,
     userVideo,
     callEnded,
     stream,
-    setName,
-    call,
+    isAuthenticated,
+    isUnauthenticated,
     user,
-    isAdmin,
     isGuest
-  }: any = useContext(SocketContext);
+  }: any = useSocket();
+  // const {
+  //   setName,
+  //   logout
+  // }: any = useSocketUpdate();
 
   // useEffect(() => {
   //   if (isGuest && !callAccepted) {

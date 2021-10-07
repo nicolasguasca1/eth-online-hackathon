@@ -9,19 +9,21 @@ import {
   Text
 } from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
-import { SocketContext } from "../Store";
+import { useSocket, useSocketUpdate } from "../Store";
 
 import { useRouter } from "next/router";
 
 export const Auth = () => {
   const {
-    authenticate,
-    isAuthenticating,
-    authError,
+    isAdmin,
+    myVideo,
     isAuthenticated,
-    signup,
-    login
-  } = useContext<any>(SocketContext);
+    isAuthenticating,
+    isUnauthenticated,
+    authError,
+    user
+  }: any = useSocket();
+  const { authenticate, signup, login }: any = useSocketUpdate();
   const router = useRouter();
 
   const SignUp = () => {

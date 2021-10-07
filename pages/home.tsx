@@ -8,7 +8,7 @@ import { Input, InputGroup, InputLeftElement, Button } from "@chakra-ui/react";
 
 import styles from "../styles/Home.module.css";
 
-import { SocketContext } from "../Store";
+import { useSocket, useSocketUpdate } from "../Store";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -21,24 +21,27 @@ const Home = (props: any) => {
   // const history = useHistory();
   const {
     me,
-    setAdmin,
     isAdmin,
     callAccepted,
     name,
-    setName,
     callEnded,
-    leaveCall,
-    callUser,
-    setGuest,
     isGuest,
     isAuthenticating,
     isAuthenticated,
     isUnauthenticated,
-    logout,
     user,
-    idToCall,
-    setIdToCall
-  } = useContext<any>(SocketContext);
+    idToCall
+  } = useSocket();
+  const {
+    answerCall,
+    leaveCall,
+    callUser,
+    setAdmin,
+    setName,
+    setGuest,
+    setIdToCall,
+    logout
+  } = useSocketUpdate();
 
   // const startCall = () => {
   //   const uid = shortid.generate();

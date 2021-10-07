@@ -1,4 +1,10 @@
-import React, { createContext, useState, useRef, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useRef,
+  useEffect,
+  useContext
+} from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
@@ -7,10 +13,27 @@ import { useRouter } from "next/router";
 import { useMoralis } from "react-moralis";
 
 const SocketContext = createContext({});
+const SocketUpdateContext = createContext({});
 
 const socket = io(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
 
 // const socket = io("https://warm-wildwood-81069.herokuapp.com");
+
+function useSocket() {
+  const useSocket = useContext(SocketContext);
+  if (useSocket === undefined) {
+    throw new Error("useSocket must be used within a SocketProvider");
+  }
+  return useSocket;
+}
+
+function useSocketUpdate() {
+  const useSocketUpdate = useContext(SocketUpdateContext);
+  if (useSocketUpdate === undefined) {
+    throw new Error("useSocketUpdate must be used within a SocketProvider");
+  }
+  return useSocketUpdate;
+}
 
 const ContextProvider = ({ children }: any) => {
   const router = useRouter();
@@ -120,33 +143,38 @@ const ContextProvider = ({ children }: any) => {
         userVideo,
         stream,
         name,
-        setName,
         callEnded,
         me,
         isAdmin,
-        setAdmin,
-        callUser,
-        leaveCall,
-        answerCall,
         router,
         isGuest,
-        setGuest,
         user,
         isAuthenticated,
         isUnauthenticated,
-        logout,
-        authenticate,
         isAuthenticating,
         authError,
-        signup,
-        login,
-        idToCall,
-        setIdToCall
+        idToCall
       }}
     >
-      {children}
+      <SocketUpdateContext.Provider
+        value={{
+          callUser,
+          leaveCall,
+          answerCall,
+          setName,
+          setAdmin,
+          setGuest,
+          logout,
+          authenticate,
+          signup,
+          login,
+          setIdToCall
+        }}
+      >
+        {children}
+      </SocketUpdateContext.Provider>
     </SocketContext.Provider>
   );
 };
 
-export { ContextProvider, SocketContext };
+export { ContextProvider, SocketContext, useSocket, useSocketUpdate };

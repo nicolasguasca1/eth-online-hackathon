@@ -12,8 +12,9 @@ import styles from "../../styles/CallPageFooter.module.css";
 
 import { SocketContext } from "../../Store";
 import { useRouter } from "next/router";
-import React, { useState, useContext, ReactChildren, ReactChild } from "react";
+import React, { useState, ReactChildren, ReactChild } from "react";
 
+import { useSocket, useSocketUpdate } from "../../Store";
 import CallPageNotifications from "./CallPageNotifications";
 
 // const CallPageFooter = ({
@@ -90,8 +91,8 @@ import CallPageNotifications from "./CallPageNotifications";
 // };
 
 const CallPageFooter = ({ setMeetInfoPopup }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-    useContext<any>(SocketContext);
+  // const { me, callAccepted, name, callEnded, callUser }: any = useSocket();
+  const { leaveCall, setName, logout }: any = useSocketUpdate();
   const router = useRouter();
   return (
     <div className={styles.footer_item}>

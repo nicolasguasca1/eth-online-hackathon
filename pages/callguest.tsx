@@ -19,7 +19,7 @@ import VideoPlayer from "../components/VideoPlayer";
 import Page from "../components/UI/Page";
 import Link from "next/link";
 import Head from "next/head";
-import { SocketContext } from "../Store";
+import { useSocket, useSocketUpdate } from "../Store";
 
 // async function getCloud() {
 //   // Fetch data from external API
@@ -39,21 +39,12 @@ import { SocketContext } from "../Store";
 const initialState = [];
 
 const CallGuest = () => {
-  const {
-    name,
-    callAccepted,
-    myVideo,
-    userVideo,
-    callEnded,
-    stream,
-    call,
-    isAdmin,
-    leaveCall,
-    isAuthenticated,
-    isUnauthenticated,
-    logout,
-    user
-  }: any = useContext(SocketContext);
+  const { isAdmin, myVideo, isAuthenticated, isUnauthenticated, user }: any =
+    useSocket();
+  // const {
+  //   setName,
+  //   logout
+  // }: any = useSocketUpdate();
   // getCloud();
 
   if (isUnauthenticated) {

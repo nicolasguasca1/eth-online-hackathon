@@ -3,11 +3,19 @@ import { Button } from "@chakra-ui/react";
 
 import styles from "../../styles/CallPageFooter.module.css";
 
-import { SocketContext } from "../../Store";
+import { useSocket, useSocketUpdate } from "../../Store";
 
 const CallPageNotifications = () => {
-  const { answerCall, call, callAccepted, user } =
-    useContext<any>(SocketContext);
+  const {
+    call,
+    callAccepted,
+    isAdmin,
+    myVideo,
+    isAuthenticated,
+    isUnauthenticated,
+    user
+  }: any = useSocket();
+  const { answerCall }: any = useSocketUpdate();
 
   return (
     <div className={styles.icon_block_left_item}>
