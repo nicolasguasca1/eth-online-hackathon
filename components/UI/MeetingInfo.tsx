@@ -8,7 +8,7 @@ import {
 import styles from "../../styles/MeetingInfo.module.css";
 
 import { useContext } from "react";
-import { SocketContext } from "../../Store";
+import { useSocket, useSocketUpdate } from "../../Store";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { useRouter } from "next/router";
@@ -61,14 +61,13 @@ const MeetingInfo = ({ setMeetInfoPopup }) => {
     me,
     callAccepted,
     name,
-    setName,
-    callEnded,
-    leaveCall,
-    callUser,
     isAuthenticated,
-    logout,
+    isUnauthenticated,
+    callEnded,
     user
-  } = useContext<any>(SocketContext);
+  }: any = useSocket();
+  const { leaveCall, setName, callUser, logout }: any = useSocketUpdate();
+
   const router = useRouter();
 
   const url = `${process.env.NEXT_PUBLIC_URL}${router.asPath}`;
