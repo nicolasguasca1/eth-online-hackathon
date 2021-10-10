@@ -22,6 +22,12 @@
     "resolveJsonModule": true,
     "importHelpers": true
   },
-  "exclude": ["dist", ".next", "out", "next.config.js"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../pages/api/cors.js"]
+  "exclude": ["dist", ".next", "out", "next.config.js", "/types/typechain"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../pages/api/cors.js",
+    "**/*.js"
+  ]
 }

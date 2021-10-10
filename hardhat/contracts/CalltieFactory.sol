@@ -14,7 +14,7 @@ contract CalltieFactory is Ownable{
 
     mapping(address => bool) public CalltieContracts;
     address [] CalltieContractList;
-    event NewCalltiet(address CalltieContractAddress , address subscriber, string CalltieBrandName, string CalltieBrandSymbol );
+    event NewCalltie(address CalltieContractAddress , address subscriber, string CalltieBrandName, string CalltieBrandSymbol );
     
     /**
      * @dev Manufacture Calltie
@@ -22,11 +22,11 @@ contract CalltieFactory is Ownable{
      * @param CalltieBrandSymbol Symbol of CALLTIE
      * @param CalltieURI URI of subscribed data
      **/
-    function newCalltieNft(string memory CalltieBrandName, string memory CalltieBrandSymbol, string memory CalltieURI) public returns (address[] memory){
-        CalltieNft _newCalltieNft = new CalltieNft( CalltieBrandName, CalltieBrandSymbol,CalltieURI);
+    function newCalltie(string memory CalltieBrandName, string memory CalltieBrandSymbol, string memory CalltieURI) public returns (address[] memory){
+        Calltie _newCalltie = new Calltie( CalltieBrandName, CalltieBrandSymbol,CalltieURI);
         CalltieContracts[address(_newCalltie)] = true;
         CalltieContractList.push(address(_newCalltie));
-        ICalltieNft(address(_newCalltie)).changeLicensor(msg.sender);
+        ICalltie(address(_newCalltie)).changeInfluencer(msg.sender);
         emit NewCalltie( address(_newCalltie),  msg.sender, CalltieBrandName, CalltieBrandSymbol);
         return CalltieContractList;
     }

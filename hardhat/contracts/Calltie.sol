@@ -10,9 +10,9 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract Callties is ERC721, ERC721URIStorage, Ownable {
-    address licensor = owner();
-    uint256 licenseCost = 10000000000000000;
+contract Calltie is ERC721, ERC721URIStorage, Ownable {
+    address influencer = owner();
+    uint256 subscriptionCost = 10000000000000000;
     string[] CALLTIE;
 
     using Counters for Counters.Counter;
@@ -84,14 +84,14 @@ contract Callties is ERC721, ERC721URIStorage, Ownable {
 
     /**
      * @dev Change cost of Subscrition
-     * @param newSubscritionCost New price for subscription
+     * @param newSubscriptionCost New price for subscription
      **/
     function changeSubscriptionCost(uint256 newSubscriptionCost)
         public
         onlyOwner
         returns (uint256)
     {
-        subscriptionCost = newLicenseCost;
+        subscriptionCost = newSubscriptionCost;
         return subscriptionCost;
     }
 }
