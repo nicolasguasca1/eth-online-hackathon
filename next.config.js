@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
+require("dotenv").config();
 module.exports = {
+  env: {
+    APP_ID: process.env.REACT_APP_MORALIS_APPLICATION_ID,
+    SERVER_URL: process.env.REACT_APP_MORALIS_SERVER_URL
+  },
   reactStrictMode: true,
   async headers() {
     return [
@@ -11,15 +16,15 @@ module.exports = {
           { key: "Access-Control-Allow-Origin", value: "*" },
           {
             key: "Access-Control-Allow-Methods",
-            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT"
           },
           {
             key: "Access-Control-Allow-Headers",
             value:
-              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-          },
-        ],
-      },
+              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+          }
+        ]
+      }
     ];
-  },
+  }
 };
