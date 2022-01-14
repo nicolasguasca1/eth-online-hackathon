@@ -42,7 +42,13 @@ const Header = () => {
               </Button>
             </Link>
           </div>
-          <Link passHref href="/dashboard/[username]">
+          <Link
+            passHref
+            href={{
+              pathname: "/dashboard/[username]",
+              query: { username: user.attributes.username }
+            }}
+          >
             <button className={styles.help_text}>Dashboard</button>
           </Link>
           <Link passHref href="/settings/[username]">
