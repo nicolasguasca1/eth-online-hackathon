@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
-require("dotenv").config();
+const webpack = require("webpack");
 module.exports = {
-  env: {
-    APP_ID: process.env.REACT_APP_MORALIS_APPLICATION_ID,
-    SERVER_URL: process.env.REACT_APP_MORALIS_SERVER_URL
-  },
   reactStrictMode: true,
   async headers() {
     return [

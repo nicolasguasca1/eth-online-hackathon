@@ -16,11 +16,11 @@ const theme = extendTheme({
   }
 });
 
-// const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
-// const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
+const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APP_ID as string;
+const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL as string;
 
-const SERVER_URL = "https://exhvmic69969.usemoralis.com:2053/server";
-const APP_ID = "vTAL7LV9e2C8AR7QSRwwTWksdujMxaIubU6Aq9ua";
+// const SERVER_URL = "https://exhvmic69969.usemoralis.com:2053/server";
+// const APP_ID = "vTAL7LV9e2C8AR7QSRwwTWksdujMxaIubU6Aq9ua";
 
 function MyApp({ Component, pageProps }: AppProps) {
   console.log("APP_ID", APP_ID);
