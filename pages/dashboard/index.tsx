@@ -91,7 +91,7 @@ const Dashboard = (props: any) => {
             </div>
           </div>
           <div className={styles.help_text}>
-            <Link passHref href="/">
+            <Link href="/" passHref>
               <Button
                 colorScheme="red"
                 variant="solid"

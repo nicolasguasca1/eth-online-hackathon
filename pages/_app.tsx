@@ -25,7 +25,6 @@ const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL as string;
 // const APP_ID = "vTAL7LV9e2C8AR7QSRwwTWksdujMxaIubU6Aq9ua";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log("APP_ID", APP_ID);
   if (!APP_ID || !SERVER_URL) {
     return (
       // <ThemeProvider theme={theme}>
