@@ -1,6 +1,8 @@
 .action_btn {
   display: flex;
   align-items: center;
+  margin: 2%;
+  border-radius: 1%;
 }
 .header {
   width: 100%;
